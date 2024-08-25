@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
