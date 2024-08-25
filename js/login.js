@@ -8,6 +8,7 @@ loginForm.addEventListener('submit', (event) => {
 
     if (username.trim() === '' || password.trim() === '') {
         alert('Por favor, ingresa tu usuario y contraseña.');
+
     } else {
        
         localStorage.setItem('loggedInUser', username);
@@ -15,3 +16,4 @@ loginForm.addEventListener('submit', (event) => {
         window.location.href = 'index.html';
     }
 });
+
