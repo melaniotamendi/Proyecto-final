@@ -11,4 +11,9 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
+    document.getElementById('logout').addEventListener('click', function() {
+        localStorage.removeItem('loggedInUser');
+        window.location.href = 'login.html';
+    });
 });
