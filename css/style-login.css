@@ -1,0 +1,90 @@
+body {
+    background-color: rgb(248, 249, 250);
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif Gujarati', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo {
+    width: 412px;
+    height: 79px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.login-form {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.mb-3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #9A9797;
+    margin-bottom: 8px;
+    text-align: left;
+    width: 100%;
+}
+
+.form-control {
+    width: 350px;
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.btn-primary {
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: center;
+    background-color: #F38020;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    transform: translateX(-50%);
+    left: 50%;
+    position: relative;
+}
