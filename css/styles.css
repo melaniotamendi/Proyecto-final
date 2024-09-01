@@ -213,5 +213,6 @@ a.custom-card:hover {
   color: ghostwhite;
   text-align: center;
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 18px;
+  font-size: 20px;
 }
