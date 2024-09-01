@@ -97,23 +97,23 @@ h2 {
       place-items: center;
     }
   }
+
   /* este es de la tablet */
   @media only screen and (max-width: 1024px) and (min-width: 768px) {
     .login-form {
       padding: 30px;
       place-items: center;
     }
-    
   }
 
  /* este es del iphone */
  @media only screen and (max-width: 568px) and (min-width: 320px) {
-    .login-form{
-     
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+   .login-form {
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
