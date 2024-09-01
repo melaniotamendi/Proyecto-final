@@ -89,6 +89,23 @@ h2 {
     position: relative;
 }
 
+/*este es el estandar */
+  @media only screen and (max-width: 1366px) and (min-width: 768px)  {
+    .login-form {
+      padding: 20px;
+      place-items: center;
+    }
+  }
+  /* este es de la tablet */
+  @media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .login-form {
+      padding: 30px;
+      place-items: center;
+    }
+    .mb-3{
+    }
+  }
+
  /* este es del iphone */
  @media only screen and (max-width: 568px) and (min-width: 320px) {
     .login-form{
