@@ -10,7 +10,27 @@
 }
 
 nav a {
-  text-decoration: none;
+  width: 105px;
+  height: 92px;
+}
+
+.navbar-nav .nav-item .nav-link {
+  padding-top: 20px; 
+  padding-bottom: 20px; 
+  font-size: 20px;
+  padding-left: 130px;
+}
+#navbar{
+  width: 100%;
+  margin: 0;
+  padding: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  
+}
+.navbar{
+  background-color: #F38020;  
 }
 
 .bd-placeholder-img {
