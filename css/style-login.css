@@ -72,18 +72,19 @@ h2 {
 }
 
 .btn-primary {
-    width: 200px;
-    height: 40px;
-    font-size: 18px;
+    width: 170px;
+    height: 50px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 40px;
     text-align: center;
     background-color: #F38020;
     border: none;
     border-radius: 25px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     color: white;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 35px;
     transform: translateX(-50%);
     left: 50%;
     position: relative;
