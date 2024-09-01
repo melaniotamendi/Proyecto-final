@@ -17,3 +17,10 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location.href = 'login.html';
     });
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+        document.getElementById('nombreDeUsuario').textContent = loggedInUser;
+    }
+});
