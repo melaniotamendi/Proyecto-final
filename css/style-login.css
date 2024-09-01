@@ -110,7 +110,8 @@ h2 {
  @media only screen and (max-width: 568px) and (min-width: 320px) {
     .login-form{
       width: 100%;
-      padding: 35px 15px 0px 15px;
+      margin-top: 20px;
+      padding: 5px 15px 5px 15px;
       place-items: center;
       display: flex;
   }
