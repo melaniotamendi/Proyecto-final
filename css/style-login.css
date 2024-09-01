@@ -40,7 +40,8 @@ body {
 h2 {
     font-size: 36px;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    margin-top: 5%;
 }
 
 .mb-3 {
@@ -61,14 +62,15 @@ h2 {
 }
 
 .form-control {
-    width: 300px;
-    height: 60px;
-    border-radius: 10px;
+    width: 220px;
+    height: 50px;
+    border-radius: 20px;
     border: 1px solid #ced4da;
     padding: 10px;
     box-sizing: border-box;
     font-size: 18px;
     line-height: 22px;
+    margin-top: -2%;
 }
 
 .btn-primary {
@@ -109,11 +111,10 @@ h2 {
  /* este es del iphone */
  @media only screen and (max-width: 568px) and (min-width: 320px) {
    .login-form {
-    width: 90%;
-    padding: 20px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 150%;
+      height: 69%;
+      padding: 4px 40px 20px 40px;
+      place-items: center;
+      display: flex;
   }
 }
