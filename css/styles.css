@@ -208,3 +208,10 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.usuarioBarraDeNavegacion {
+  color: ghostwhite;
+  text-align: center;
+  display: inline-block;
+  margin-top: 8px;
+}
