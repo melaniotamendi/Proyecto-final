@@ -17,6 +17,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+//Para que funcione el usuario y el cerrar sesión en la barra de navegación
+document.addEventListener('DOMContentLoaded', () => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+        document.getElementById('nombreDeUsuario').textContent = loggedInUser;
+    }
+    document.getElementById('logout').addEventListener('click', function() {
+        localStorage.removeItem('loggedInUser'); // Cierra sesión
+        window.location.href = 'login.html'; // Redirige al usuario a la página de inicio de sesión
+    });
+});
+
 function mostrarAutos(arreglo) {
     const mostrar = document.querySelector("#mostrar .row"); 
     let cardsHTML = ''; 
@@ -40,3 +52,4 @@ function mostrarAutos(arreglo) {
 
     mostrar.innerHTML = cardsHTML; 
 }
+
