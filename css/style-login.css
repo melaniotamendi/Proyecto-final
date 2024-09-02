@@ -98,6 +98,17 @@ h2 {
       padding: 20px;
       place-items: center;
     }
+       .form-control {
+      border-radius: 10px;
+      width: 140%;
+      height: 50%;
+      padding: 20px 10px 20px 10px;
+      
+     }
+     .form-label {
+      margin-left: -60%;
+      padding: 10px;
+     }
   }
 
   /* este es de la tablet */
@@ -106,6 +117,17 @@ h2 {
       padding: 30px;
       place-items: center;
     }
+       .form-control {
+        border-radius: 10px;
+        width: 140%;
+        height: 50%;
+        padding: 20px 10px 20px 10px;
+        
+       }
+       .form-label {
+       margin-left: -60%;
+       padding: 10px;
+      }
   }
 
  /* este es del iphone */
