@@ -1,15 +1,18 @@
-const autos = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+// Obtener el ID de la categoría almacenado en localStorage
+const catID = localStorage.getItem("catID"); 
+// URL de la API con el ID de la categoría
+const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
 getJSONData = function(url) {
     let result = {};
-return fetch(url)
+    return fetch(url)
       .then(response => response.ok ? response.json() : Promise.reject(Error(response.statusText)))
       .then(response => ({ status: 'ok', data: response }))
       .catch(error => ({ status: 'error', data: error }));
   }
 
 document.addEventListener("DOMContentLoaded", function() {
-    getJSONData(autos).then(function(respObj) {
+    getJSONData(url).then(function(respObj) {
         if (respObj.status == "ok") {
             console.log(respObj.data.products);
             mostrarAutos(respObj.data.products);
