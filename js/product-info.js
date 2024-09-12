@@ -68,7 +68,7 @@ imagesHTML += `
 
 let productHTML = `
 <div class="container d-flex">
-<div class="card" style="max-width: 4000px;">
+<div class="card" style="max-width: 10000px;">
   <div class="row">
     <!-- Columna de imágenes -->
     <div class="col-md-6 float-left">
@@ -77,13 +77,15 @@ let productHTML = `
 
     <!-- Columna de detalles del producto -->
     <div class="col-md-6 float-right">
-    <div class="card-body style="max-width: 400px;">
+    <div class="card-body style="max-width: 900px;">
      <h2>${product.name}</h2>
-     <p class="lead"><strong>Precio:</strong> ${product.currency} ${product.cost}</p>
-     <p><strong>Categoría:</strong> ${product.category}</p>
+     <br>
+     <h5> ${product.currency} ${product.cost}</h5>
+     <br>
+     <p style="margin-bottom: 0;"><strong>Categoría:</strong> ${product.category}</p>
      <p><strong>Cantidad vendidos:</strong> ${product.soldCount}</p>
-     <p>${product.description}</p>
-     <button class="btn btn-primary">Comprar</button>
+     <p id="descripcion">${product.description}</p>
+     <button id="comprar" class="btn btn-primary">Comprar</button>
     </div>
  </div>
 </div>
