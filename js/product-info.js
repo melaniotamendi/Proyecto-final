@@ -78,9 +78,9 @@ let productHTML = `
     <!-- Columna de detalles del producto -->
     <div class="col-md-6 float-right">
     <div class="card-body style="max-width: 900px;">
-     <h2>${product.name}</h2>
+     <h2> <strong>${product.name}</strong></h2>
      <br>
-     <h5> ${product.currency} ${product.cost}</h5>
+     <h5><strong> ${product.currency} ${product.cost} </strong></h5>
      <br>
      <p style="margin-bottom: 0;"><strong>Categoría:</strong> ${product.category}</p>
      <p><strong>Cantidad vendidos:</strong> ${product.soldCount}</p>

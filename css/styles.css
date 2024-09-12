@@ -237,23 +237,25 @@ left: 15%;
 position: relative;
 }
 .card {
-  margin-top: -1%;
+  margin-top: -3%;
   border: 1px solid #ced4da;
-  padding: 30px;
+  padding: 35px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   display: flex; 
   flex-direction: column; 
   height: 100%; 
+  color: #000;
 }
 
-.card-body {
-  padding: 4px;
-  
-}
+
 
 #descripcion {
   color: rgb(134, 133, 133);
 
+}
+
+a {
+  color: rgb(59, 59, 59);
 }
