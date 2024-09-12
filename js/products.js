@@ -11,14 +11,28 @@ getJSONData = function(url) {
       .catch(error => ({ status: 'error', data: error }));
   }
 
-document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById('search-input');
+    let products = [];
+
+    // Obtener datos de productos al cargar la página
     getJSONData(url).then(function(respObj) {
         if (respObj.status == "ok") {
-            console.log(respObj.data.products);
-            mostrarAutos(respObj.data.products);
+            products = respObj.data.products; 
+            mostrarAutos(products); 
         }
     });
-});
+
+   // Escuchar eventos en el buscador
+   searchInput.addEventListener('input', function() {
+   const searchTerm = searchInput.value.toLowerCase();
+   const filteredProducts = products.filter(product =>
+   product.name.toLowerCase().includes(searchTerm) ||
+   product.description.toLowerCase().includes(searchTerm)
+            );
+            mostrarAutos(filteredProducts); // Mostrar solo los productos filtrados
+        });
+    });
 
 //Para que funcione el usuario y el cerrar sesión en la barra de navegación
 document.addEventListener('DOMContentLoaded', () => {
