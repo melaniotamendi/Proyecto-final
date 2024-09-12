@@ -46,7 +46,7 @@ function mostrarAutos(arreglo) {
                         <p class="card-text">${element.description}</p>
                         <p class="card-text">Cantidad vendidos: ${element.soldCount}</p>
                         <p class="card-text price"><strong>${element.currency} ${element.cost}</strong></p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                         <a href="javascript:void(0)" onclick="guardarProductoYRedirigir(${element.id})" class="btn btn-primary">Ver Producto</a>
                     </div>
                 </div>
             </div>
@@ -56,3 +56,7 @@ function mostrarAutos(arreglo) {
     mostrar.innerHTML = cardsHTML; 
 }
 
+function guardarProductoYRedirigir(productID) {
+    localStorage.setItem("productID", productID); 
+    window.location.href = "product-info.html"; 
+}
