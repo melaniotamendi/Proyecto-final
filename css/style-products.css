@@ -124,3 +124,60 @@
     margin-top: 10px;
     font-size: 15px;
   }
+
+  .contenedor-filtro {
+    gap: 15px; 
+    padding: 10px; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+
+.fila-filtro {
+    align-items: center; 
+}
+
+.columna-ordenar,
+.columna-filtro {
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.columna-ordenar button,
+.columna-filtro button {
+    background-color:  #F38020; 
+    color: white;
+    border: none;
+    padding: 6px 12px; 
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 20px; 
+    transition: background-color 0.3s ease; 
+}
+
+.columna-ordenar button:hover,
+.columna-filtro button:hover {
+    background-color:  #F38020; 
+}
+
+h5 {
+    font-size: 14px; 
+    color: #333; 
+    font-weight: 600; 
+    margin-bottom: 10px; 
+}
+
+.input-precio {
+    width: auto; 
+    padding: 4px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    max-width: 100px; 
+}
+
+label {
+    font-size: 12px; 
+    color: #666; 
+}
+
+  
