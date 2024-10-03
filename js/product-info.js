@@ -155,3 +155,15 @@ function mostrarComentarios(comments) {
       }
     });
   });
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+  // Obtener la calificación seleccionada
+  const rating = document.querySelector('input[name="rate"]:checked');
+  const comment = document.getElementById('comment').value;
+
+  if (rating && comment.trim() !== '') {
+    alert(`Has calificado con ${rating.value} estrellas. Comentario: ${comment}`);
+  } else {
+    alert('Por favor, selecciona una calificación y escribe un comentario.');
+  }
+});
