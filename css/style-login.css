@@ -1,0 +1,142 @@
+body {
+    background-color: rgb(248, 249, 250);
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif Gujarati', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo {
+    width: 412px;
+    height: 79px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.login-form {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 5%;
+}
+
+.mb-3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #9A9797;
+    margin-bottom: 8px;
+    text-align: left;
+    width: 100%;
+}
+
+.form-control {
+    width: 220px;
+    height: 50px;
+    border-radius: 20px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: -2%;
+}
+
+.btn-primary {
+    width: 170px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: center;
+    background-color: #F38020;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    cursor: pointer;
+    margin-top: 35px;
+    transform: translateX(-50%);
+    left: 50%;
+    position: relative;
+}
+
+/*este es el estandar */
+  @media only screen and (max-width: 1366px) and (min-width: 768px)  {
+    .login-form {
+      padding: 20px;
+      place-items: center;
+    }
+       .form-control {
+      border-radius: 10px;
+      width: 140%;
+      height: 50%;
+      padding: 20px 10px 20px 10px;
+      
+     }
+     .form-label {
+      margin-left: -50%;
+      padding: 10px;
+     }
+  }
+
+  /* este es de la tablet */
+  @media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .login-form {
+      padding: 30px;
+      place-items: center;
+    }
+       .form-control {
+        border-radius: 10px;
+        width: 140%;
+        height: 50%;
+        padding: 20px 10px 20px 10px;
+        
+       }
+       .form-label {
+       margin-left: -50%;
+       padding: 10px;
+      }
+  }
+
+ /* este es del iphone */
+ @media only screen and (max-width: 568px) and (min-width: 320px) {
+   .login-form {
+  width: 150%;
+      height: 69%;
+      padding: 4px 40px 20px 40px;
+      place-items: center;
+      display: flex;
+  }
+}

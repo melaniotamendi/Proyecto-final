@@ -1,0 +1,182 @@
+.navbar {
+    background-color: #F38020; 
+    padding: 10px 0; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+  }
+  
+  .navbar .logo {
+    width: 105px;
+    height: 92px;
+  }
+  
+  .form-inline {
+    display: flex;
+    align-items: center;
+    width: 100%; 
+    max-width: 1030px; 
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+    width: 100%; 
+    max-width: 1030px;
+  }
+  
+  .search-input {
+    border: none;
+    border-radius: 30px; 
+    height: 45px; 
+    width: 100%; 
+    padding: 0 15px; 
+    font-size: 16px; 
+    color: #f38020; 
+  }
+  
+  
+  .card {
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+  }
+  
+  .card-img-top {
+    height: 200px; 
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .card-body .card-text {
+    text-align: left; 
+    margin-bottom: 8px; 
+    color: #6c757d;
+  }
+  
+  .card-body .card-text.price {
+    text-align: left; 
+    margin-top: 12px; 
+    color: black;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .card-text strong {
+    font-weight: 700;
+  }
+  
+  .btn-primary {
+    background-color: #F38020;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e36e00; 
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.5rem; 
+  }
+  
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+  
+  .float-end a {
+    color: #F38020;
+  }
+  
+  .float-end a:hover {
+    text-decoration: underline;
+  }
+
+  .usuarioBarraDeNavegacion {
+    color: ghostwhite;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .contenedor-filtro {
+    gap: 15px; 
+    padding: 10px; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+
+.fila-filtro {
+    align-items: center; 
+}
+
+.columna-ordenar,
+.columna-filtro {
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.columna-ordenar button,
+.columna-filtro button {
+    background-color:  #F38020; 
+    color: white;
+    border: none;
+    padding: 6px 12px; 
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 20px; 
+    transition: background-color 0.3s ease; 
+}
+
+.columna-ordenar button:hover,
+.columna-filtro button:hover {
+    background-color:  #F38020; 
+}
+
+h5 {
+    font-size: 14px; 
+    color: #333; 
+    font-weight: 600; 
+    margin-bottom: 10px; 
+}
+
+.input-precio {
+    width: auto; 
+    padding: 4px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    max-width: 100px; 
+}
+
+label {
+    font-size: 12px; 
+    color: #666; 
+}
+  
