@@ -259,3 +259,30 @@ position: relative;
 a {
   color: rgb(59, 59, 59);
 }
+
+   /*esto es para modificar las estrellas del calificar, no tiene que ver con el anterior */
+   #rating {
+    direction: rtl; /* Establecer la dirección de izquierda a derecha */
+    font-size: 2rem;
+    display: inline-flex;
+}
+
+#rating input {
+    display: none; /* Ocultar inputs de radio */
+}
+
+#rating label {
+    color: #ccc;
+    cursor: pointer;
+}
+
+/* Al hacer hover, se colorean de izquierda a derecha */
+#rating label:hover, 
+#rating label:hover ~ label {
+    color: #f5b301; /* Color dorado en hover */
+}
+
+/* Cuando se selecciona una estrella, se colorean todas las anteriores */
+#rating input:checked ~ label {
+    color: #f5b301;
+}
