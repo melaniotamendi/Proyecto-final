@@ -1,4 +1,3 @@
-
 const productId = localStorage.getItem('productID'); 
 
 const productInfoURL = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
@@ -153,5 +152,22 @@ function mostrarComentarios(comments) {
       if (resultObj.status === "ok") {
         mostrarComentarios(resultObj.data);
       }
+    });
+  });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const stars = document.querySelectorAll(".rating .fa");
+    
+    stars.forEach(star => {
+      star.addEventListener("click", function() {
+        stars.forEach(s => s.classList.remove("active"));
+        this.classList.add("active");
+        let prevSibling = this.previousElementSibling;
+        while (prevSibling) {
+          prevSibling.classList.add("active");
+          prevSibling = prevSibling.previousElementSibling;
+        }
+      });
     });
   });
