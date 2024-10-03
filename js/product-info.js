@@ -68,7 +68,7 @@ imagesHTML += `
 `;
 
 let productHTML = `
-<div class="container d-flex">
+<div id= "carta" class="container d-flex">
 <div class="card" style="max-width: 10000px;">
   <div class="row">
     <!-- Columna de imágenes -->
@@ -117,18 +117,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+let totalScore = 0;  // Total de las calificaciones
+let commentCount = 0;
 function mostrarComentarios(comments) {
     const commentsContainer = document.getElementById("product-comments");
-    let commentsHTML = "<h3 id=opiniones>  Opiniones del producto  </h3>";
-  
+    let commentsHTML = "<h3 id=opiniones style='color: #000000;'>  Opiniones del producto  </h3>";
+   
     comments.forEach(comment => {
+      totalScore += comment.score;  // Sumar la calificación
+      commentCount++;  // Incr
       commentsHTML += `
+      <br>
         <div class="comment">
           <div class="rating">
             ${'⭐'.repeat(comment.score)}
           </div>
+          
           <div class="d-flex justify-content-between">
-            <strong>${comment.user}</strong>
+            <h5 style='color: #000000;'>${comment.user}</h5>
             <span>${comment.dateTime}</span>
           </div>
           <p>${comment.description}</p>
@@ -139,7 +145,21 @@ function mostrarComentarios(comments) {
     });
   
     commentsContainer.innerHTML = commentsHTML;
+    mostrarPromedioCalificaciones();
+
   }
+
+  /*esta funcion es para mostrar el promedio de calificaciones*/
+  function mostrarPromedioCalificaciones() {
+    const promedio = (totalScore / commentCount).toFixed(1);  // Calcular el promedio y redondear a un decimal
+    const promedioContainer = document.getElementById("promedio-calificaciones");
+  
+    promedioContainer.innerHTML = `  <h1 style='color: #F38020;' > ${promedio}  ${'⭐'.repeat(promedio)} </h1>
+    <br>
+    <br>
+    <br>`;
+  }
+
   document.addEventListener("DOMContentLoaded", function() {
     // Obtener información del producto
     getJSONData(productInfoURL).then(function(resultObj) {
@@ -161,26 +181,33 @@ document.getElementById('submitBtn').addEventListener('click', function() {
   const rating = document.querySelector('input[name="rate"]:checked');
   const comment = document.getElementById('comment').value;
 
-  if (rating && comment.trim() !== '') {
-    alert(`Has calificado con ${rating.value} estrellas. Comentario: ${comment}`);
+  if (rating || comment.trim() !== '') {
+    alert(`Has calificado este producto`);
   } else {
-    alert('Por favor, selecciona una calificación y escribe un comentario.');
+    alert('Por favor, selecciona una calificación o escribe un comentario.');
   }
 });
+
+
+
+
+
 // Agregar nuevo comentario
 document.getElementById('submitBtn').addEventListener('click', function() {
   const loggedInUser = localStorage.getItem('loggedInUser'); // Obtener el nombre del usuario desde localStorage
   const rating = document.querySelector('input[name="rate"]:checked'); // Obtener la calificación seleccionada
   const comment = document.getElementById('comment').value; // Obtener el comentario
 
-  if (rating && comment.trim() !== '') {
+  if (rating || comment.trim() !== '') {
       const newComment = {
           user: loggedInUser,
           score: parseInt(rating.value),
           dateTime: new Date().toLocaleString(),
           description: comment
       };
-
+      totalScore += newComment.score;
+      commentCount++; /*esto es para que sume al promeido las nuevas calificaciones*/
+  
       // Agregar el nuevo comentario al contenedor
       const commentsContainer = document.getElementById("product-comments");
       const stars = '⭐'.repeat(newComment.score); // Generar estrellas según la calificación
@@ -188,7 +215,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
           <div class="comment">
               <div class="rating">${stars}</div>
               <div class="d-flex justify-content-between">
-                  <strong>${newComment.user}</strong>
+                  <h5 style='color: #000000;'>${newComment.user}</h5>
                   <span>${newComment.dateTime}</span>
               </div>
               <p>${newComment.description}</p>
@@ -196,10 +223,11 @@ document.getElementById('submitBtn').addEventListener('click', function() {
               <hr>
           </div>`;
 
-      // Limpiar el formulario después del envío
-      document.getElementById('comment').value = '';
-      document.querySelector('input[name="rate"]:checked').checked = false;
-  } else {
-      alert('Por favor, selecciona una calificación y escribe un comentario.');
-  }
+          document.getElementById('comment').value = '';
+          document.querySelector('input[name="rate"]:checked').checked = false;
+          mostrarPromedioCalificaciones(); /*esta funcion es para que cuando haya una nueva calificacion, se actualice el promedio*/
+        } 
+          else {
+          alert('Por favor, selecciona una calificación o escribe un comentario.');
+          }
 });

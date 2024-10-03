@@ -286,3 +286,92 @@ a {
 #rating input:checked ~ label {
     color: #f5b301;
 }
+
+/* Esto es para modifocar el tama;o de las estrellas, pero las que estan en la lista, no las de calificar*/
+.rating {
+  font-size: 20px; 
+}
+
+/* Estos cambios son para el estilo de la caja de comentarios y el boton*/
+
+#submitBtn:hover {
+  background-color: #c57b19;
+}
+
+
+
+#submitBtn {
+  width: 140px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  background-color: #F38020;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 1%;
+  transform: translateX(-50%);
+  left: 190%;
+  position: relative;
+}
+
+#rating {
+  margin-top: -5%;
+  margin-left: 26%;
+  align-content: center;
+}
+
+.comment-section {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la caja de comentarios */
+#comment {
+  width: 100%;
+  height: 300px;
+margin-left: 1%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow:  0px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  resize: none; 
+  transition: border-color 0.3s ease;
+  background-color:#f7fafa ; 
+}
+
+
+#comment:focus {
+  border-color: #adadad;
+  outline: none;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+#califica {
+  display: flex;
+    align-items: center; 
+   
+}
+
+#califica > *{
+  margin-right: 2% ;
+  margin-top: 2%;
+   margin-left: 1%;
+}
+
+
+
+/* Esto le aumenta el tamaño a la card de los productos y le aplica margen para que no quede tan cerca a la barra de navegacion*/
+#carta {
+  margin-top: 5%;
+  width: 190%;
+}
