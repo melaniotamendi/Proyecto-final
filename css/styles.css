@@ -217,29 +217,72 @@ a.custom-card:hover {
   font-size: 20px;
 }
 
-    /*esto es para modificar las estrellas del calificar, no tiene que ver con el anterior */
-    #rating {
-      direction: rtl; /* Establecer la dirección de izquierda a derecha */
-      font-size: 2rem;
-      display: inline-flex;
-  }
-  
-  #rating input {
-      display: none; /* Ocultar inputs de radio */
-  }
-  
-  #rating label {
-      color: #ccc;
-      cursor: pointer;
-  }
-  
-  /* Al hacer hover, se colorean de izquierda a derecha */
-  #rating label:hover, 
-  #rating label:hover ~ label {
-      color: #f5b301; /* Color dorado en hover */
-  }
-  
-  /* Cuando se selecciona una estrella, se colorean todas las anteriores */
-  #rating input:checked ~ label {
-      color: #f5b301;
-  }
+#comprar {
+ 
+width: 140px;
+height: 40px;
+font-size: 20px;
+font-weight: 700;
+line-height: 20px;
+text-align: center;
+background-color: #F38020;
+border: none;
+border-radius: 10px;
+box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+color: white;
+cursor: pointer;
+margin-top: 35px;
+transform: translateX(-50%);
+left: 15%;
+position: relative;
+}
+.card {
+  margin-top: -3%;
+  border: 1px solid #ced4da;
+  padding: 35px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  display: flex; 
+  flex-direction: column; 
+  height: 100%; 
+  color: #000;
+}
+
+
+
+#descripcion {
+  color: rgb(134, 133, 133);
+
+}
+
+a {
+  color: rgb(59, 59, 59);
+}
+
+   /*esto es para modificar las estrellas del calificar, no tiene que ver con el anterior */
+   #rating {
+    direction: rtl; /* Establecer la dirección de izquierda a derecha */
+    font-size: 2rem;
+    display: inline-flex;
+}
+
+#rating input {
+    display: none; /* Ocultar inputs de radio */
+}
+
+#rating label {
+    color: #ccc;
+    cursor: pointer;
+}
+
+/* Al hacer hover, se colorean de izquierda a derecha */
+#rating label:hover, 
+#rating label:hover ~ label {
+    color: #f5b301; /* Color dorado en hover */
+}
+
+/* Cuando se selecciona una estrella, se colorean todas las anteriores */
+#rating input:checked ~ label {
+    color: #f5b301;
+}
