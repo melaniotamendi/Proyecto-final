@@ -1,6 +1,4 @@
-// Obtener el ID de la categoría almacenado en localStorage
 const catID = localStorage.getItem("catID"); 
-// URL de la API con el ID de la categoría
 const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
 getJSONData = function(url) {
@@ -9,27 +7,80 @@ getJSONData = function(url) {
       .then(response => response.ok ? response.json() : Promise.reject(Error(response.statusText)))
       .then(response => ({ status: 'ok', data: response }))
       .catch(error => ({ status: 'error', data: error }));
-  }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById('search-input');
+    let products = [];
+
+    // Obtener datos de productos al cargar la página
     getJSONData(url).then(function(respObj) {
         if (respObj.status == "ok") {
-            console.log(respObj.data.products);
-            mostrarAutos(respObj.data.products);
+            products = respObj.data.products; 
+            mostrarAutos(products); 
         }
     });
+
+   // Buscador
+   searchInput.addEventListener('input', function() {
+       const searchTerm = searchInput.value.toLowerCase();
+       const filteredProducts = products.filter(product =>
+           product.name.toLowerCase().includes(searchTerm) ||
+           product.description.toLowerCase().includes(searchTerm)
+       );
+       mostrarAutos(filteredProducts); // Muestra solo los productos filtrados
+   });
+
+   // Botones de ordenar y filtros
+   document.getElementById('menorPrecio').addEventListener('click', function() {
+       const ordenMenorPrecio = [...products].sort((a, b) => a.cost - b.cost);
+       mostrarAutos(ordenMenorPrecio);
+   });
+
+   document.getElementById('mayorPrecio').addEventListener('click', function() {
+       const ordenMayorPrecio = [...products].sort((a, b) => b.cost - a.cost);
+       mostrarAutos(ordenMayorPrecio);
+   });
+
+   document.getElementById('masVendidos').addEventListener('click', function() {
+       const ordenMasVendidos = [...products].sort((a, b) => b.soldCount - a.soldCount);
+       mostrarAutos(ordenMasVendidos);
+   });
+
+//Filtra por rango de pracio 
+   document.getElementById('filtrarPrecio').addEventListener('click', function() {
+    const minPriceInput = document.getElementById('minPrice');  
+    const maxPriceInput = document.getElementById('maxPrice');  
+
+    const minPrice = parseFloat(minPriceInput.value) || 0; 
+    const maxPrice = parseFloat(maxPriceInput.value) || Infinity; 
+
+    const filteredByPrice = products.filter(product => 
+        product.cost >= minPrice && product.cost <= maxPrice
+    );
+    mostrarAutos(filteredByPrice); 
 });
 
-//Para que funcione el usuario y el cerrar sesión en la barra de navegación
-document.addEventListener('DOMContentLoaded', () => {
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    if (loggedInUser) {
-        document.getElementById('nombreDeUsuario').textContent = loggedInUser;
-    }
-    document.getElementById('logout').addEventListener('click', function() {
-        localStorage.removeItem('loggedInUser'); // Cierra sesión
-        window.location.href = 'login.html'; // Redirige al usuario a la página de inicio de sesión
-    });
+
+// Limpiar los filtros y mostrar todos los productos otra vez
+document.getElementById('limpiarFiltros').addEventListener('click', function() {
+    const minPriceInput = document.getElementById('minPrice');  
+    const maxPriceInput = document.getElementById('maxPrice');  
+
+    minPriceInput.value = '';  
+    maxPriceInput.value = '';
+    mostrarAutos(products); 
+});
+
+   // Para que funcione el usuario y el cerrar sesión en la barra de navegación
+   const loggedInUser = localStorage.getItem('loggedInUser');
+   if (loggedInUser) {
+       document.getElementById('nombreDeUsuario').textContent = loggedInUser;
+   }
+   document.getElementById('logout').addEventListener('click', function() {
+       localStorage.removeItem('loggedInUser'); // Cierra sesión
+       window.location.href = 'login.html'; // Redirige al usuario a la página de inicio de sesión
+   });
 });
 
 function mostrarAutos(arreglo) {
@@ -46,7 +97,7 @@ function mostrarAutos(arreglo) {
                         <p class="card-text">${element.description}</p>
                         <p class="card-text">Cantidad vendidos: ${element.soldCount}</p>
                         <p class="card-text price"><strong>${element.currency} ${element.cost}</strong></p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <a href="javascript:void(0)" onclick="guardarProductoYRedirigir(${element.id})" class="btn btn-primary">Ver Producto</a>
                     </div>
                 </div>
             </div>
@@ -56,3 +107,7 @@ function mostrarAutos(arreglo) {
     mostrar.innerHTML = cardsHTML; 
 }
 
+function guardarProductoYRedirigir(productID) {
+    localStorage.setItem("productID", productID); 
+    window.location.href = "product-info.html"; 
+}
