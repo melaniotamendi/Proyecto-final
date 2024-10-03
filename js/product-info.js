@@ -167,3 +167,39 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     alert('Por favor, selecciona una calificación y escribe un comentario.');
   }
 });
+// Agregar nuevo comentario
+document.getElementById('submitBtn').addEventListener('click', function() {
+  const loggedInUser = localStorage.getItem('loggedInUser'); // Obtener el nombre del usuario desde localStorage
+  const rating = document.querySelector('input[name="rate"]:checked'); // Obtener la calificación seleccionada
+  const comment = document.getElementById('comment').value; // Obtener el comentario
+
+  if (rating && comment.trim() !== '') {
+      const newComment = {
+          user: loggedInUser,
+          score: parseInt(rating.value),
+          dateTime: new Date().toLocaleString(),
+          description: comment
+      };
+
+      // Agregar el nuevo comentario al contenedor
+      const commentsContainer = document.getElementById("product-comments");
+      const stars = '⭐'.repeat(newComment.score); // Generar estrellas según la calificación
+      commentsContainer.innerHTML += `
+          <div class="comment">
+              <div class="rating">${stars}</div>
+              <div class="d-flex justify-content-between">
+                  <strong>${newComment.user}</strong>
+                  <span>${newComment.dateTime}</span>
+              </div>
+              <p>${newComment.description}</p>
+              <br>
+              <hr>
+          </div>`;
+
+      // Limpiar el formulario después del envío
+      document.getElementById('comment').value = '';
+      document.querySelector('input[name="rate"]:checked').checked = false;
+  } else {
+      alert('Por favor, selecciona una calificación y escribe un comentario.');
+  }
+});
