@@ -2,7 +2,7 @@
 const productId = localStorage.getItem('productID'); 
 
 const productInfoURL = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
-
+const productCommentsURL = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`; // URL para los comentarios
 
 
 getJSONData = function(url) {
