@@ -138,7 +138,6 @@ function mostrarComentarios(comments) {
             <span>${comment.dateTime}</span>
           </div>
           <p>${comment.description}</p>
-          <br>
         </div>
       `;
     });
