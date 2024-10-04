@@ -133,7 +133,6 @@ function mostrarComentarios(comments) {
           </div>
           <p>${comment.description}</p>
           <br>
-          <hr>
         </div>
       `;
     });
