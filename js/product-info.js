@@ -104,6 +104,60 @@ window.changeCarouselImage = function(index) {
 }
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  const productId = localStorage.getItem("productID"); 
+  const catID = localStorage.getItem("catID"); 
+
+  if (productId && catID) {
+    // Cargar los detalles del producto actual
+    getJSONData(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
+      .then(function(resultObj) {
+        if (resultObj.status === "ok") {
+          const product = resultObj.data;
+          document.getElementById('product-info').innerHTML = `
+            <h1>${product.name}</h1>
+            <img src="${product.image}" alt="${product.name}">
+            <p>${product.description}</p>
+            <p>Precio: ${product.price}</p>
+          `;
+        }
+      });
+
+    // Cargar productos relacionados de la misma categoría
+    getJSONData(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
+      .then(function(resultObj) {
+        if (resultObj.status === "ok") {
+          mostrarProductosRelacionados(resultObj.data.products);
+        }
+      });
+  }
+});
+
+//Prodcutos de interes
+function mostrarProductosRelacionados(products) {
+  const relatedProductsContainer = document.getElementById('related-products');
+  let productsHTML = '';
+
+  products.forEach((product) => {
+    productsHTML += `
+      <div class="card">
+        <img src="${product.image}" class="card-img-top" alt="${product.name}" 
+          onclick="redirectToProduct(${product.id})"> <!-- Redirige al hacer clic -->
+        <div class="card-body">
+          <h6 class="card-title" style="font-size: 14px;">${product.name}</h6>
+        </div>
+      </div>
+    `;
+  });
+
+  relatedProductsContainer.innerHTML = productsHTML;
+}
+
+// Función para redirigir al hacer clic en el producto
+function redirectToProduct(productId) {
+  localStorage.setItem("productID", productId); // Guarda el ID del producto en localStorage
+  window.location.href = "product-info.html";   // Redirige a la página del producto
+}
 
 // Para manejar el nombre del usuario y el botón de cerrar sesión
 document.addEventListener('DOMContentLoaded', () => {

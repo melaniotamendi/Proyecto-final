@@ -372,6 +372,19 @@ margin-left: 1%;
 
 /* Esto le aumenta el tamaño a la card de los productos y le aplica margen para que no quede tan cerca a la barra de navegacion*/
 #carta {
-  margin-top: 5%;
-  width: 190%;
+  margin-top: 10%;
+  width: 300%;
+}
+
+#related-products .card {
+  flex: 0 0 auto; /* No permita que se estiren */
+  width: 250px; /* Tamaño personalizado de las tarjetas */
+  margin-right: 5px; /* Espacio entre tarjetas */
+  margin-block-start: 10px;
+}
+
+#related-products img {
+  width: 100%; /* Las imágenes ocupan todo el ancho de su tarjeta */
+  height: auto;
+  margin-top: 20%;
 }
