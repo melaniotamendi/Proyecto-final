@@ -263,7 +263,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
       // Agregar el nuevo comentario al contenedor
       const commentsContainer = document.getElementById("product-comments");
       const stars = '⭐'.repeat(newComment.score); // Generar estrellas según la calificación
-      commentsContainer.innerHTML += `
+      commentsContainer.innerHTML += ` <br>
           <div class="comment">
               <div class="rating">${stars}</div>
               <div class="d-flex justify-content-between">
@@ -272,7 +272,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
               </div>
               <p>${newComment.description}</p>
               <br>
-              <hr>
+              
           </div>`;
 
           document.getElementById('comment').value = '';
