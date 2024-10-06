@@ -301,8 +301,8 @@ a {
 
 
 #submitBtn {
-  width: 140px;
-  height: 40px;
+  width: fit-content; 
+  padding: 10px 15px; 
   font-size: 20px;
   font-weight: 700;
   line-height: 20px;
