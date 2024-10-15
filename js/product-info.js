@@ -138,18 +138,21 @@ function mostrarProductosRelacionados(products) {
   const relatedProductsContainer = document.getElementById('related-products');
   let productsHTML = '';
 
+  // Crear las tarjetas para cada producto relacionado
   products.forEach((product) => {
     productsHTML += `
-      <div class="card">
-        <img src="${product.image}" class="card-img-top" alt="${product.name}" 
+      <div class="card" style="width: 18rem; margin-right: 10px;">
+        <img src="${product.image}" class="card-img-top" alt="${product.name}" style="cursor: pointer;"
           onclick="redirectToProduct(${product.id})"> <!-- Redirige al hacer clic -->
         <div class="card-body">
-          <h6 class="card-title" style="font-size: 14px;">${product.name}</h6>
+          <h6 class="card-title">${product.name}</h6>
+          <p class="card-text">${product.currency} ${product.cost}</p>
         </div>
       </div>
     `;
   });
 
+  // Insertar las tarjetas dentro del contenedor del carrusel
   relatedProductsContainer.innerHTML = productsHTML;
 }
 
