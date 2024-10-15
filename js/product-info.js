@@ -203,13 +203,21 @@ function mostrarComentarios(comments) {
 
   /*esta funcion es para mostrar el promedio de calificaciones*/
   function mostrarPromedioCalificaciones() {
-    const promedio = (totalScore / commentCount).toFixed(1);  // Calcular el promedio y redondear a un decimal
     const promedioContainer = document.getElementById("promedio-calificaciones");
-  
+//El if pone la condicion de que se calcula el promedio solo si hay comentarios 
+   if (commentCount > 0) {
+    const promedio = (totalScore / commentCount).toFixed(1);  // Calcular el promedio y redondear a un decimal
     promedioContainer.innerHTML = `  <h1 style='color: #F38020;' > ${promedio}  ${'⭐'.repeat(promedio)} </h1>
     <br>
     <br>
     <br>`;
+  } 
+     //Si no hay comentarios se va a ejecutar este else, que deberia mostrar este mensaje
+   else { promedioContainer.innerHTML = `<p style='color: #888888;'>No hay calificaciones disponibles.</p> 
+    <br>
+    <br>
+    `;
+   }
   }
 
   document.addEventListener("DOMContentLoaded", function() {
