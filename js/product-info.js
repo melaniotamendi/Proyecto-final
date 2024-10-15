@@ -127,13 +127,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
 
-    // Cargar productos relacionados de la misma categoría
-    getJSONData(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
-      .then(function(resultObj) {
-        if (resultObj.status === "ok") {
-          mostrarProductosRelacionados(resultObj.data.products);
-        }
-      });
   }
 });
 
