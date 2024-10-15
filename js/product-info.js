@@ -13,10 +13,14 @@ getJSONData = function(url) {
     .catch(error => ({ status: 'error', data: error }));
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  getJSONData(productInfoURL).then(function(resultObj) {
+document.addEventListener("DOMContentLoaded", function () {
+  getJSONData(productInfoURL).then(function (resultObj) {
     if (resultObj.status === "ok") {
-      mostrarInformacionProducto(resultObj.data);
+      const product = resultObj.data;
+      mostrarInformacionProducto(product);
+
+      // Mostrar los productos relacionados usando los IDs en relatedProducts
+      mostrarProductosRelacionados(product.relatedProducts);
     }
   });
 });
