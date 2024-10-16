@@ -406,9 +406,10 @@ a {
  /* este es del iphone */
  @media only screen and (max-width: 568px) and (min-width: 320px) {
   #related-products {
-      
-  }
-  #submitBtn {
- 
+      display:flex;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      margin: 5px;
+      width: -1000%;
     }
-}
