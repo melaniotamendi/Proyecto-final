@@ -306,7 +306,6 @@ a {
   font-size: 20px;
   font-weight: 700;
   line-height: 20px;
-  text-align: center;
   background-color: #F38020;
   border: none;
   border-radius: 10px;
@@ -315,14 +314,13 @@ a {
   cursor: pointer;
   margin-top: 1%;
   transform: translateX(-50%);
-  left: 160%;
+  left: 275%;
   position: relative;
 }
 
 
 #rating {
-  margin-top: -5%;
-  margin-left: 26%;
+  margin-left: 2%;
   align-content: center;
 }
 
@@ -362,11 +360,13 @@ a {
 #califica {
   display: flex;
   align-items: center; 
+  text-align: center;
+  text-align: justify;
 }
 
 #califica {
   margin-right: 2% ;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 1%;
 }
 
@@ -413,4 +413,24 @@ a {
       margin: 5px;
       width: -1000%;
     }
+    #related-products .card {
+      width: -250px; /* Tamaño personalizado de las tarjetas */
+      justify-content: center;
+    }
+    
+    #related-products img {
+      width: 100%; /* Las imágenes ocupan todo el ancho de su tarjeta */
+      height: auto;
+      flex-wrap: wrap;
+    }
+#submitBtn {
+  display: flex;
+  margin-left: -250px;
+margin-top: 300%;
+  }
+
+  #estrellas {
+    display: flex;
+   
+  }
   }
