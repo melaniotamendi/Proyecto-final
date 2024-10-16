@@ -143,7 +143,6 @@ function mostrarProductosRelacionados(products) {
           onclick="redirectToProduct(${product.id})"> <!-- Redirige al hacer clic -->
         <div class="card-body">
           <h6 class="card-title">${product.name}</h6>
-          <p class="card-text">${product.currency} ${product.cost}</p>
         </div>
       </div>
     `;
