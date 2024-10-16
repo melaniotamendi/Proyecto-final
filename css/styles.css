@@ -361,32 +361,37 @@ a {
 
 #califica {
   display: flex;
-    align-items: center; 
-   
+  align-items: center; 
+}
 
-#califica > *{
+#califica {
   margin-right: 2% ;
   margin-top: 2%;
-   margin-left: 1%;
+  margin-left: 1%;
 }
 
 
 
 /* Esto le aumenta el tamaño a la card de los productos y le aplica margen para que no quede tan cerca a la barra de navegacion*/
 #carta {
-  margin-top: 10%;
-  width: 300%;
+  width: 100%;
+  margin-top: 5%;
 }
 
 #related-products .card {
   flex: 0 0 auto; /* No permita que se estiren */
-  width: 250px; /* Tamaño personalizado de las tarjetas */
-  margin-right: 5px; /* Espacio entre tarjetas */
+  width: 200px; /* Tamaño personalizado de las tarjetas */
   margin-block-start: 10px;
+  margin-top: 2%;
+  margin-bottom: 0%;
 }
 
 #related-products img {
   width: 100%; /* Las imágenes ocupan todo el ancho de su tarjeta */
   height: auto;
-  margin-top: 20%;
+  flex-wrap: wrap;
 }
+
+ .card {
+  
+ }
