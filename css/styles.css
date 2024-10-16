@@ -399,38 +399,47 @@ a {
     }
     #submitBtn {
        padding: auto;
-       margin-right: -245px;
+       margin-right: -210px;
       }
   }
 
  /* este es del iphone */
  @media only screen and (max-width: 568px) and (min-width: 320px) {
   #related-products {
-      display:flex;
-      justify-content: center;
-      justify-items: center;
-      align-items: center;
-      margin: 5px;
-      width: -1000%;
-    }
-    #related-products .card {
-      width: -250px; /* Tamaño personalizado de las tarjetas */
-      justify-content: center;
-    }
-    
-    #related-products img {
-      width: 100%; /* Las imágenes ocupan todo el ancho de su tarjeta */
-      height: auto;
-      flex-wrap: wrap;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin: 5px;
+  }
+  #related-products .card {
+    width: 90%; /* Ajustar el ancho para pantallas pequeñas */
+    margin-bottom: 10px;
+  }
+  #related-products img {
+    width: 100%; /* Asegura que las imágenes no se desborden */
+    height: auto;
+  }  
 #submitBtn {
   display: flex;
-  margin-left: -250px;
-margin-top: 300%;
+  position: relative; /* Asegura que el botón se posicione dentro de su contenedor */
+  top: 50px;  /* Ajusta la posición si es necesario */
+  left: auto;
+  right: 70px;
+  bottom: auto;
+  width: 100%;
+  
+  }
+  #textocalifica {
+    font-size: 16px;
+    white-space: nowrap;
+    margin-left: -7px;
+  }
+  #rating {
+    font-weight: 200;
+    width: 100%;
   }
 
-  #estrellas {
-    display: flex;
-   
+  #textocalifica, #rating {
+    margin-top: 15px;
   }
   }
