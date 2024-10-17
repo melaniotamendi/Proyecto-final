@@ -179,4 +179,30 @@ label {
     font-size: 12px; 
     color: #666; 
 }
+
+#dropdown-btn {
+  margin-top: -3%;
+  margin-left: 272%;
+}
+
+.btn-orange {
+  background-color:#F38020; /* Color naranja */
+  border-color: white;
+  color: #f7fafa;
+}
+
+.btn-orange:hover {
+  background-color: #FF8C00; /* Un naranja más oscuro al hacer hover */
+  border-color: #FF8C00;
+}
+
+.dropdown-menu .dropdown-item {
+  margin: auto;
+  color: #F38020;
+}
+
+.dropdown-menu {
+margin-left: 425px;
+}
+
   
