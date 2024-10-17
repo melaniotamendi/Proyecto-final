@@ -23,7 +23,8 @@ margin: 0;
   padding-top: 20px; 
   padding-bottom: 20px; 
   font-size: 20px;
-  padding-left: 130px;
+  padding-left: 220px;
+  align-items: center;
 }
 #navbar{
   width: 100%;
@@ -52,10 +53,9 @@ margin: 0;
 }
 
 #dropdown-btn {
-  margin-top: 13%;
+  margin-top: 10%;
   margin-left: 100%;
 }
-
 .btn-orange {
   background-color:#F38020; /* Color naranja */
   border-color: white;
@@ -73,7 +73,7 @@ margin: 0;
 }
 
 .dropdown-menu {
-margin-left: 110px;
+margin-left: 175px;
 }
 
 @media (min-width: 768px) {
