@@ -476,4 +476,12 @@ a {
   #textocalifica, #rating {
     margin-top: 15px;
   }
+  #dropdown-btn {
+    margin-top: 3%;
+    margin-left: 55%;
+    margin-bottom: 3%;
+  }
+  #navbarNav {
+    margin-left: -30%;
+  }
   }
