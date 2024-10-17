@@ -413,15 +413,15 @@ a {
 }
 
 #related-products .card {
-  flex: 0 0 auto; /* No permita que se estiren */
-  width: 200px; /* Tamaño personalizado de las tarjetas */
+  flex: 0 0 auto; 
+  width: 200px; 
   margin-block-start: 10px;
   margin-top: 2%;
   margin-bottom: 0%;
 }
 
 #related-products img {
-  width: 100%; /* Las imágenes ocupan todo el ancho de su tarjeta */
+  width: 100%; 
   height: auto;
   flex-wrap: wrap;
 }
@@ -442,21 +442,21 @@ a {
   #related-products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centra las tarjetas horizontalmente */
+    justify-content: center; 
     margin: 5px;
   }
   #related-products .card {
-    width: 90%; /* Ajustar el ancho para pantallas pequeñas */
+    width: 90%; 
     margin-bottom: 10px;
   }
   #related-products img {
-    width: 100%; /* Asegura que las imágenes no se desborden */
+    width: 100%; 
     height: auto;
   }  
 #submitBtn {
   display: flex;
-  position: relative; /* Asegura que el botón se posicione dentro de su contenedor */
-  top: 50px;  /* Ajusta la posición si es necesario */
+  position: relative; 
+  top: 50px;  
   left: auto;
   right: 70px;
   bottom: auto;
