@@ -235,6 +235,23 @@ function mostrarComentarios(comments) {
     });
   });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const stars = document.querySelectorAll(".rating .fa");
+    
+    stars.forEach(star => {
+      star.addEventListener("click", function() {
+        stars.forEach(s => s.classList.remove("active"));
+        this.classList.add("active");
+        let prevSibling = this.previousElementSibling;
+        while (prevSibling) {
+          prevSibling.classList.add("active");
+          prevSibling = prevSibling.previousElementSibling;
+        }
+      });
+    });
+  });
+
 document.getElementById('submitBtn').addEventListener('click', function() {
   // Obtener la calificación seleccionada
   const rating = document.querySelector('input[name="rate"]:checked');
@@ -246,10 +263,6 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     alert('Por favor, selecciona una calificación o escribe un comentario.');
   }
 });
-
-
-
-
 
 // Agregar nuevo comentario
 document.getElementById('submitBtn').addEventListener('click', function() {
@@ -290,3 +303,37 @@ document.getElementById('submitBtn').addEventListener('click', function() {
           alert('Por favor, selecciona una calificación o escribe un comentario.');
           }
 });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeButton = document.getElementById('themeButton');
+    const body = document.body;
+  
+    // Función Modo Claro y Modo Oscuro
+    function toggleTheme() {
+      const isDark = body.classList.contains('dark-theme');
+      if (isDark) {
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+        themeButton.textContent = 'Modo Oscuro';
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+        themeButton.textContent = 'Modo Claro';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+  
+    // Cargar preferencias a localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-theme');
+      themeButton.textContent = 'Modo Claro'; // Cambiar el texto del botón si está en modo oscuro
+    } else {
+      body.classList.add('light-theme');
+      themeButton.textContent = 'Modo Oscuro'; // Cambiar el texto del botón si está en modo claro
+    }
+  
+    // Cambiar el modo al hacer click
+    themeButton.addEventListener('click', toggleTheme);
+  });
