@@ -286,3 +286,43 @@ a {
 #rating input:checked ~ label {
     color: #f5b301;
 }
+
+/* diseño de botón en los modos*/
+#themeButton {
+  padding: 10px 20px;
+  background-color: #F38020;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+#themeButton:hover {
+  background-color: #c57b19;
+}
+/* Modo Noche */
+.dark-theme {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.dark-theme .navbar {
+  background-color: #333;
+}
+
+.dark-theme #comment {
+  background-color: #444444; /* Fondo más oscuro */
+  color: white; /* Texto en blanco */
+  border: 1px solid #555; /* Borde más oscuro */
+}
+
+/* Modo Día */
+.light-theme {
+  background-color: white;
+  color: black;
+}
+
+.light-theme .navbar {
+  background-color: #F38020;
+}
