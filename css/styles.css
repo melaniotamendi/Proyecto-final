@@ -435,6 +435,15 @@ a {
        padding: auto;
        margin-right: -210px;
       }
+      #dropdown-btn {
+        display: flex;
+        margin-top: 3%;
+        margin-left: 36%;
+        margin-bottom: 3%;
+      }
+      .dropdown-menu {
+        margin-right: auto;
+        }
   }
 
  /* este es del iphone */
