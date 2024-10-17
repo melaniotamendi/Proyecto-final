@@ -1,3 +1,4 @@
+
 const productId = localStorage.getItem('productID'); 
 
 const productInfoURL = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
@@ -154,6 +155,7 @@ function mostrarComentarios(comments) {
       }
     });
   });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
