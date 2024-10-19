@@ -538,7 +538,6 @@ a {
 /* Botones en Modo Oscuro */
 .dark-theme #themeButton, 
 .dark-theme #submitBtn {
-  background-color: #444444;  /* Fondo oscuro para botones */
   color: #e0e0e0;  /* Texto claro */
   border: none;
 }
