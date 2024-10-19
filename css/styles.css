@@ -420,9 +420,9 @@ a {
 
   /* este es de la tablet */
   @media only screen and (max-width: 1024px) and (min-width: 768px) {
-    #related-products {
-      
-    }
+    /*#related-products {
+      Dejo esto comentado porque no se si tenian que agregarle algo pero estaba vacio y me daba error
+    } */
     #submitBtn {
        padding: auto;
        margin-right: -210px;
@@ -597,3 +597,28 @@ a {
   filter: invert(100%); /* Invertir colores para que los iconos sean visibles */
 }
 
+#estiloCambiarFoto, #guardarFotoPerfil {
+  width: fit-content; 
+  padding: 10px 15px; 
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 20px;
+  background-color: #F38020;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 1%;
+  transform: translateX(-50%);
+  left: 45%;
+  position: relative;
+
+}
+
+#imagenPerfil {
+  width: 300px; /* Ajusta el tamaño a lo que prefieras */
+  height: 300px; /* Asegúrate de que sea igual al width */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen no se deforme dentro del contenedor */
+}
