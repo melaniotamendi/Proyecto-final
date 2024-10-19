@@ -9,16 +9,22 @@
   font-weight: bold;
 }
 
-nav a {
-  width: 105px;
-  height: 92px;
+#navbarNav {
+  margin-right: 15%;
+}
+
+
+
+.nav-item {
+margin: 0;
 }
 
 .navbar-nav .nav-item .nav-link {
   padding-top: 20px; 
   padding-bottom: 20px; 
   font-size: 20px;
-  padding-left: 130px;
+  padding-left: 220px;
+  align-items: center;
 }
 #navbar{
   width: 100%;
@@ -26,11 +32,11 @@ nav a {
   padding: 10px; 
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   
 }
 .navbar{
-  background-color: #F38020;  
+  background-color: #F38020; 
 }
 
 .bd-placeholder-img {
@@ -40,6 +46,34 @@ nav a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#logout {
+  white-space: nowrap;
+}
+
+#dropdown-btn {
+  margin-top: 10%;
+  margin-left: 100%;
+}
+.btn-orange {
+  background-color:#F38020; /* Color naranja */
+  border-color: white;
+  color: #f7fafa;
+}
+
+.btn-orange:hover {
+  background-color: #FF8C00; /* Un naranja más oscuro al hacer hover */
+  border-color: #FF8C00;
+}
+
+.dropdown-menu .dropdown-item {
+  margin: auto;
+  color: #F38020;
+}
+
+.dropdown-menu {
+margin-left: 175px;
 }
 
 @media (min-width: 768px) {
@@ -287,7 +321,164 @@ a {
     color: #f5b301;
 }
 
-/* diseño de botón en los modos*/
+/* Esto es para modifocar el tama;o de las estrellas, pero las que estan en la lista, no las de calificar*/
+.rating {
+  font-size: 20px; 
+}
+
+/* Estos cambios son para el estilo de la caja de comentarios y el boton*/
+
+#submitBtn:hover {
+  background-color: #c57b19;
+}
+
+
+
+#submitBtn {
+  width: fit-content; 
+  padding: 10px 15px; 
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  background-color: #F38020;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 1%;
+  transform: translateX(-50%);
+  left: 275%;
+  position: relative;
+}
+
+
+#rating {
+  margin-left: 2%;
+  align-content: center;
+}
+
+.comment-section {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la caja de comentarios */
+#comment {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow:  0px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  resize: none; 
+  transition: border-color 0.3s ease;
+  background-color:#f7fafa ; 
+  width: 100%;
+  margin: 0 auto; 
+  height: 150px; 
+
+}
+
+
+#comment:focus {
+  border-color: #adadad;
+  outline: none;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+#califica {
+  display: flex;
+  align-items: center; 
+  text-align: center;
+  text-align: justify;
+}
+
+#califica {
+  margin-right: 2% ;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+
+
+
+/* Esto le aumenta el tamaño a la card de los productos y le aplica margen para que no quede tan cerca a la barra de navegacion*/
+#carta {
+  width: 100%;
+  margin-top: 5%;
+}
+
+#related-products .card {
+  flex: 0 0 auto; 
+  width: 200px; 
+  margin-block-start: 10px;
+  margin-top: 2%;
+  margin-bottom: 0%;
+}
+
+#related-products img {
+  width: 100%; 
+  height: auto;
+  flex-wrap: wrap;
+}
+
+  /* este es de la tablet */
+  @media only screen and (max-width: 1024px) and (min-width: 768px) {
+    #related-products {
+      
+    }
+    #submitBtn {
+       padding: auto;
+       margin-right: -210px;
+      }
+  }
+
+ /* este es del iphone */
+ @media only screen and (max-width: 568px) and (min-width: 320px) {
+  #related-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    margin: 5px;
+  }
+  #related-products .card {
+    width: 90%; 
+    margin-bottom: 10px;
+  }
+  #related-products img {
+    width: 100%; 
+    height: auto;
+  }  
+#submitBtn {
+  display: flex;
+  position: relative; 
+  top: 50px;  
+  left: auto;
+  right: 70px;
+  bottom: auto;
+  width: 100%;
+  
+  }
+  #textocalifica {
+    font-size: 16px;
+    white-space: nowrap;
+    margin-left: -7px;
+  }
+  #rating {
+    font-weight: 200;
+    width: 100%;
+  }
+
+  #textocalifica, #rating {
+    margin-top: 15px;
+  }
+}
+
+/*diseño de botón en los modos*/
 #themeButton {
   padding: 10px 20px;
   background-color: #F38020;
