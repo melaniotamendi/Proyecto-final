@@ -301,28 +301,92 @@ a {
 #themeButton:hover {
   background-color: #c57b19;
 }
-/* Modo Noche */
+
+/* Modo Oscuro */
 .dark-theme {
-  background-color: #1e1e1e;
-  color: white;
+  background-color: #121212;  /* Fondo principal muy oscuro */
+  color: #e0e0e0;  /* Texto gris claro */
 }
 
 .dark-theme .navbar {
-  background-color: #333;
+  background-color: #333333; /* Barra de navegación oscura */
+  color: white;
 }
 
+/* Ajuste de las cards en modo oscuro */
+.dark-theme .card {
+  background-color: #1e1e1e; /* Fondo oscuro para las cards */
+  color: #e0e0e0;  /* Texto gris claro */
+  border: 1px solid #333333; /* Borde oscuro */
+}
+
+/* Caja de comentarios en Modo Oscuro */
 .dark-theme #comment {
-  background-color: #444444; /* Fondo más oscuro */
-  color: white; /* Texto en blanco */
-  border: 1px solid #555; /* Borde más oscuro */
+  background-color: #262626;  /* Fondo aún más oscuro */
+  color: #e0e0e0;  /* Texto gris claro */
+  border: 1px solid #444444; /* Borde oscuro */
+  box-shadow: none;  /* Eliminar sombra */
 }
 
-/* Modo Día */
-.light-theme {
-  background-color: white;
-  color: black;
+/* Botones en Modo Oscuro */
+.dark-theme #themeButton, 
+.dark-theme #submitBtn {
+  background-color: #444444;  /* Fondo oscuro para botones */
+  color: #e0e0e0;  /* Texto claro */
+  border: none;
 }
 
-.light-theme .navbar {
-  background-color: #F38020;
+.dark-theme #themeButton:hover, 
+.dark-theme #submitBtn:hover {
+  background-color: #555555;  /* Color más oscuro al hacer hover */
+}
+
+/* Ajustar el dropdown del navbar en modo oscuro */
+.dark-theme .dropdown-menu {
+  background-color: #333333;
+  color: #e0e0e0;
+}
+
+.dark-theme .dropdown-item {
+  color: #e0e0e0;
+}
+
+.dark-theme .dropdown-item:hover {
+  background-color: #444444; /* Resaltar en hover */
+  color: #ffffff;
+}
+
+/* Links en modo oscuro */
+.dark-theme a {
+  color: #80cbc4; /* Un tono verde/azul oscuro */
+}
+
+.dark-theme a:hover {
+  color: #4db6ac; /* Color más brillante en hover */
+}
+
+/* Calificaciones en Modo Oscuro en estrellas */
+.dark-theme .fas.fa-star {
+  color: #f5b301;  /* Estrellas doradas */
+}
+
+/* Modificar el estilo del footer en modo oscuro */
+.dark-theme footer {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* Spinner cargando en Modo Oscuro */
+.dark-theme .lds-ring div {
+  border-color: #e0e0e0 transparent transparent transparent;
+}
+
+/* Ajustar el estilo del carousel en Modo Oscuro */
+.dark-theme .carousel-inner {
+  background-color: #1e1e1e;
+}
+
+.dark-theme .carousel-control-prev-icon,
+.dark-theme .carousel-control-next-icon {
+  filter: invert(100%); /* Invertir colores para que los iconos sean visibles */
 }
