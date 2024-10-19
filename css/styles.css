@@ -493,6 +493,14 @@ a {
   background-color: #c57b19;
 }
 
+/* Estilos para el botón de Modo Oscuro */
+.theme-toggle {
+  display: flex;
+  justify-content: flex-start; /* Mueve el botón a la izquierda */
+  margin-left: 125px; /* Ajusta este valor según el margen de la card */
+  margin-top: 20px; /* Separación superior */
+}
+
 /* Modo Oscuro */
 .dark-theme {
   background-color: #121212;  /* Fondo principal muy oscuro */
