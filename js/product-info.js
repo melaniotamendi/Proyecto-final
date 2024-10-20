@@ -2,7 +2,7 @@
 const productId = localStorage.getItem('productID'); 
 
 const productInfoURL = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
-
+const productCommentsURL = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`; // URL para los comentarios
 
 
 getJSONData = function(url) {
@@ -13,10 +13,14 @@ getJSONData = function(url) {
     .catch(error => ({ status: 'error', data: error }));
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  getJSONData(productInfoURL).then(function(resultObj) {
+document.addEventListener("DOMContentLoaded", function () {
+  getJSONData(productInfoURL).then(function (resultObj) {
     if (resultObj.status === "ok") {
-      mostrarInformacionProducto(resultObj.data);
+      const product = resultObj.data;
+      mostrarInformacionProducto(product);
+
+      // Mostrar los productos relacionados usando los IDs en relatedProducts
+      mostrarProductosRelacionados(product.relatedProducts);
     }
   });
 });
@@ -68,7 +72,7 @@ imagesHTML += `
 `;
 
 let productHTML = `
-<div class="container d-flex">
+<div id= "carta" class="container d-flex">
 <div class="card" style="max-width: 10000px;">
   <div class="row">
     <!-- Columna de imágenes -->
@@ -104,6 +108,55 @@ window.changeCarouselImage = function(index) {
 }
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  const productId = localStorage.getItem("productID"); 
+  const catID = localStorage.getItem("catID"); 
+
+  if (productId && catID) {
+    // Cargar los detalles del producto actual
+    getJSONData(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
+      .then(function(resultObj) {
+        if (resultObj.status === "ok") {
+          const product = resultObj.data;
+          document.getElementById('product-info').innerHTML = `
+            <h1>${product.name}</h1>
+            <img src="${product.image}" alt="${product.name}">
+            <p>${product.description}</p>
+            <p>Precio: ${product.price}</p>
+          `;
+        }
+      });
+
+  }
+});
+
+//Prodcutos de interes
+function mostrarProductosRelacionados(products) {
+  const relatedProductsContainer = document.getElementById('related-products');
+  let productsHTML = '';
+
+  // Crear las tarjetas para cada producto relacionado
+  products.forEach((product) => {
+    productsHTML += `
+      <div class="card" style="width: 18rem; margin-right: 10px;">
+        <img src="${product.image}" class="card-img-top" alt="${product.name}" style="cursor: pointer;"
+          onclick="redirectToProduct(${product.id})"> <!-- Redirige al hacer clic -->
+        <div class="card-body">
+          <h6 class="card-title">${product.name}</h6>
+        </div>
+      </div>
+    `;
+  });
+
+  // Insertar las tarjetas dentro del contenedor del carrusel
+  relatedProductsContainer.innerHTML = productsHTML;
+}
+
+// Función para redirigir al hacer clic en el producto
+function redirectToProduct(productId) {
+  localStorage.setItem("productID", productId); // Guarda el ID del producto en localStorage
+  window.location.href = "product-info.html";   // Redirige a la página del producto
+}
 
 // Para manejar el nombre del usuario y el botón de cerrar sesión
 document.addEventListener('DOMContentLoaded', () => {
@@ -117,18 +170,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+let totalScore = 0;  // Total de las calificaciones
+let commentCount = 0;
 function mostrarComentarios(comments) {
     const commentsContainer = document.getElementById("product-comments");
-    let commentsHTML = "<h3 id=opiniones>  Opiniones del producto  </h3>";
-  
+    let commentsHTML = "<h3 id=opiniones style='color: #000000;'>  Opiniones del producto  </h3>";
+   
     comments.forEach(comment => {
+      totalScore += comment.score;  // Sumar la calificación
+      commentCount++;  // Incr
       commentsHTML += `
+      <br>
         <div class="comment">
           <div class="rating">
             ${'⭐'.repeat(comment.score)}
           </div>
+          
           <div class="d-flex justify-content-between">
-            <strong>${comment.user}</strong>
+            <h5 style='color: #000000;'>${comment.user}</h5>
             <span>${comment.dateTime}</span>
           </div>
           <p>${comment.description}</p>
@@ -137,7 +196,29 @@ function mostrarComentarios(comments) {
     });
   
     commentsContainer.innerHTML = commentsHTML;
+    mostrarPromedioCalificaciones();
+
   }
+
+  /*esta funcion es para mostrar el promedio de calificaciones*/
+  function mostrarPromedioCalificaciones() {
+    const promedioContainer = document.getElementById("promedio-calificaciones");
+//El if pone la condicion de que se calcula el promedio solo si hay comentarios 
+   if (commentCount > 0) {
+    const promedio = (totalScore / commentCount).toFixed(1);  // Calcular el promedio y redondear a un decimal
+    promedioContainer.innerHTML = `  <h1 style='color: #F38020;' > ${promedio}  ${'⭐'.repeat(promedio)} </h1>
+    <br>
+    <br>
+    <br>`;
+  } 
+     //Si no hay comentarios se va a ejecutar este else, que deberia mostrar este mensaje
+   else { promedioContainer.innerHTML = `<p style='color: #888888;'>No hay calificaciones disponibles.</p> 
+    <br>
+    <br>
+    `;
+   }
+  }
+
   document.addEventListener("DOMContentLoaded", function() {
     // Obtener información del producto
     getJSONData(productInfoURL).then(function(resultObj) {
@@ -152,4 +233,107 @@ function mostrarComentarios(comments) {
         mostrarComentarios(resultObj.data);
       }
     });
+  });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const stars = document.querySelectorAll(".rating .fa");
+    
+    stars.forEach(star => {
+      star.addEventListener("click", function() {
+        stars.forEach(s => s.classList.remove("active"));
+        this.classList.add("active");
+        let prevSibling = this.previousElementSibling;
+        while (prevSibling) {
+          prevSibling.classList.add("active");
+          prevSibling = prevSibling.previousElementSibling;
+        }
+      });
+    });
+  });
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+  // Obtener la calificación seleccionada
+  const rating = document.querySelector('input[name="rate"]:checked');
+  const comment = document.getElementById('comment').value;
+
+  if (rating || comment.trim() !== '') {
+    alert(`Has calificado este producto`);
+  } else {
+    alert('Por favor, selecciona una calificación o escribe un comentario.');
+  }
+});
+
+// Agregar nuevo comentario
+document.getElementById('submitBtn').addEventListener('click', function() {
+  const loggedInUser = localStorage.getItem('loggedInUser'); // Obtener el nombre del usuario desde localStorage
+  const rating = document.querySelector('input[name="rate"]:checked'); // Obtener la calificación seleccionada
+  const comment = document.getElementById('comment').value; // Obtener el comentario
+
+  if (rating || comment.trim() !== '') {
+      const newComment = {
+          user: loggedInUser,
+          score: parseInt(rating.value),
+          dateTime: new Date().toLocaleString(),
+          description: comment
+      };
+      totalScore += newComment.score;
+      commentCount++; /*esto es para que sume al promeido las nuevas calificaciones*/
+  
+      // Agregar el nuevo comentario al contenedor
+      const commentsContainer = document.getElementById("product-comments");
+      const stars = '⭐'.repeat(newComment.score); // Generar estrellas según la calificación
+      commentsContainer.innerHTML += ` <br>
+          <div class="comment">
+              <div class="rating">${stars}</div>
+              <div class="d-flex justify-content-between">
+                  <h5 style='color: #000000;'>${newComment.user}</h5>
+                  <span>${newComment.dateTime}</span>
+              </div>
+              <p>${newComment.description}</p>
+              <br>
+              
+          </div>`;
+
+          document.getElementById('comment').value = '';
+          document.querySelector('input[name="rate"]:checked').checked = false;
+          mostrarPromedioCalificaciones(); /*esta funcion es para que cuando haya una nueva calificacion, se actualice el promedio*/
+        } 
+          else {
+          alert('Por favor, selecciona una calificación o escribe un comentario.');
+          }
+});
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeButton = document.getElementById('themeButton');
+    const body = document.body;
+  
+    // Función Modo Claro y Modo Oscuro
+    function toggleTheme() {
+      const isDark = body.classList.contains('dark-theme');
+      if (isDark) {
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+        themeButton.textContent = 'Modo Oscuro';
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+        themeButton.textContent = 'Modo Claro';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+  
+    // Cargar preferencias a localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-theme');
+      themeButton.textContent = 'Modo Claro'; // Cambiar el texto del botón si está en modo oscuro
+    } else {
+      body.classList.add('light-theme');
+      themeButton.textContent = 'Modo Oscuro'; // Cambiar el texto del botón si está en modo claro
+    }
+  
+    // Cambiar el modo al hacer click
+    themeButton.addEventListener('click', toggleTheme);
   });

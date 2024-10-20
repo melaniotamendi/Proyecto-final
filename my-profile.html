@@ -44,12 +44,14 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="logout">Cerrar Sesión</a>
-        </li>
-        <li class="usuarioBarraDeNavegacion">
-          <span id="nombreDeUsuario"></span> 
-        </li>
+          <li class="nav-item dropdown">
+            <button id="dropdown-btn" class="btn btn-orange dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="nombreDeUsuario"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a id="logout" class="dropdown-item" href="login.html">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>
@@ -59,7 +61,14 @@
       <div class="card mt-5 custom-card"" style="width: 100%">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="https://via.placeholder.com/350" class="img-fluid rounded-start" alt="User image">
+            <img id="imagenPerfil" src="img/icon-7797704_1280.png"  alt="User image"> 
+            <div class="foto-perfil">
+              <!-- Este input es para cambiar foto de perfil -->
+              <br><br>
+              <label id="estiloCambiarFoto" for="inputFotoPerfil">Elegir Foto</label>
+              <input type="file" id="inputFotoPerfil" accept="image/*" style="display:none;"> 
+              <br><br> 
+              </div>
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -100,7 +109,7 @@
                   <input type="tel" class="form-control" id="telefono" >
                 </div>
 
-               <div class="col-sm-12">  <button class="button" type="submit">Guardar Cambios</button> </div>
+               <div class="col-sm-12">  <button id="guardarFotoPerfil" class="button" type="submit">Guardar Cambios</button> </div>
                 
                 </div>
               </div>

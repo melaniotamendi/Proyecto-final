@@ -9,16 +9,20 @@
   font-weight: bold;
 }
 
-nav a {
-  width: 105px;
-  height: 92px;
+#navbarNav {
+  margin-right: 15%;
+}
+
+.nav-item {
+margin: 0;
 }
 
 .navbar-nav .nav-item .nav-link {
   padding-top: 20px; 
   padding-bottom: 20px; 
   font-size: 20px;
-  padding-left: 130px;
+  padding-left: 220px;
+  align-items: center;
 }
 #navbar{
   width: 100%;
@@ -26,11 +30,11 @@ nav a {
   padding: 10px; 
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   
 }
 .navbar{
-  background-color: #F38020;  
+  background-color: #F38020; 
 }
 
 .bd-placeholder-img {
@@ -40,6 +44,34 @@ nav a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#logout {
+  white-space: nowrap;
+}
+
+#dropdown-btn {
+  margin-top: 10%;
+  margin-left: 100%;
+}
+.btn-orange {
+  background-color:#F38020; /* Color naranja */
+  border-color: white;
+  color: #f7fafa;
+}
+
+.btn-orange:hover {
+  background-color: #FF8C00; /* Un naranja más oscuro al hacer hover */
+  border-color: #FF8C00;
+}
+
+.dropdown-menu .dropdown-item {
+  margin: auto;
+  color: #F38020;
+}
+
+.dropdown-menu {
+margin-left: 175px;
 }
 
 @media (min-width: 768px) {
@@ -236,6 +268,7 @@ transform: translateX(-50%);
 left: 15%;
 position: relative;
 }
+
 .card {
   margin-top: -3%;
   border: 1px solid #ced4da;
@@ -249,8 +282,6 @@ position: relative;
   color: #000;
 }
 
-
-
 #descripcion {
   color: rgb(134, 133, 133);
 
@@ -258,4 +289,336 @@ position: relative;
 
 a {
   color: rgb(59, 59, 59);
+}
+
+/*esto es para modificar las estrellas del calificar, no tiene que ver con el anterior */
+ #rating {
+    direction: rtl; /* Establecer la dirección de izquierda a derecha */
+    font-size: 2rem;
+    display: inline-flex;
+}
+
+#rating input {
+    display: none; /* Ocultar inputs de radio */
+}
+
+#rating label {
+    color: #ccc;
+    cursor: pointer;
+}
+
+/* Al hacer hover, se colorean de izquierda a derecha */
+#rating label:hover, 
+#rating label:hover ~ label {
+    color: #f5b301; /* Color dorado en hover */
+}
+
+/* Cuando se selecciona una estrella, se colorean todas las anteriores */
+#rating input:checked ~ label {
+    color: #f5b301;
+}
+
+/* Esto es para modifocar el tama;o de las estrellas, pero las que estan en la lista, no las de calificar*/
+.rating {
+  font-size: 20px; 
+}
+
+/* Estos cambios son para el estilo de la caja de comentarios y el boton*/
+
+#submitBtn:hover {
+  background-color: #c57b19;
+}
+
+#submitBtn {
+  width: fit-content; 
+  padding: 10px 15px; 
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  background-color: #F38020;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 1%;
+  transform: translateX(-50%);
+  left: 275%;
+  position: relative;
+}
+
+#rating {
+  margin-left: 2%;
+  align-content: center;
+}
+
+.comment-section {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la caja de comentarios */
+#comment {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow:  0px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  resize: none; 
+  transition: border-color 0.3s ease;
+  background-color:#f7fafa ; 
+  width: 100%;
+  margin: 0 auto; 
+  height: 150px; 
+
+}
+
+
+#comment:focus {
+  border-color: #adadad;
+  outline: none;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+#califica {
+  display: flex;
+  align-items: center; 
+  text-align: center;
+  text-align: justify;
+}
+
+#califica {
+  margin-right: 2% ;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+
+/* Esto le aumenta el tamaño a la card de los productos y le aplica margen para que no quede tan cerca a la barra de navegacion*/
+#carta {
+  width: 100%;
+  margin-top: 5%;
+}
+
+#related-products .card {
+  flex: 0 0 auto; 
+  width: 200px; 
+  margin-block-start: 10px;
+  margin-top: 2%;
+  margin-bottom: 0%;
+}
+
+#related-products img {
+  width: 100%; 
+  height: auto;
+  flex-wrap: wrap;
+}
+
+  /* este es de la tablet */
+  @media only screen and (max-width: 1024px) and (min-width: 768px) {
+    /*#related-products {
+      Dejo esto comentado porque no se si tenian que agregarle algo pero estaba vacio y me daba error
+    } */
+    #submitBtn {
+       padding: auto;
+       margin-right: -210px;
+      }
+      #dropdown-btn {
+        display: flex;
+        margin-top: 3%;
+        margin-left: 36%;
+        margin-bottom: 3%;
+      }
+      .dropdown-menu {
+        margin-right: auto;
+        }
+  }
+
+ /* este es del iphone */
+ @media only screen and (max-width: 568px) and (min-width: 320px) {
+  #related-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    margin: 5px;
+  }
+  #related-products .card {
+    width: 90%; 
+    margin-bottom: 10px;
+  }
+  #related-products img {
+    width: 100%; 
+    height: auto;
+  }  
+#submitBtn {
+  display: flex;
+  position: relative; 
+  top: 50px;  
+  left: auto;
+  right: 70px;
+  bottom: auto;
+  width: 100%;
+  
+  }
+  #textocalifica {
+    font-size: 16px;
+    white-space: nowrap;
+    margin-left: -7px;
+  }
+  #rating {
+    font-weight: 200;
+    width: 100%;
+  }
+
+  #textocalifica, #rating {
+    margin-top: 15px;
+  }
+  #dropdown-btn {
+    margin-top: 3%;
+    margin-left: 55%;
+    margin-bottom: 3%;
+  }
+  #navbarNav {
+    margin-left: -30%;
+  }
+  }
+
+/*diseño de botón en los modos*/
+#themeButton {
+  padding: 10px 20px;
+  background-color: #F38020;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#themeButton:hover {
+  background-color: #c57b19;
+}
+
+/* Estilos para el botón de Modo Oscuro */
+.theme-toggle {
+  display: flex;
+  justify-content: flex-start; /* Mueve el botón a la izquierda */
+  margin-left: 125px; /* Ajusta este valor según el margen de la card */
+  margin-top: 20px; /* Separación superior */
+}
+
+/* Modo Oscuro */
+.dark-theme {
+  background-color: #121212;  /* Fondo principal muy oscuro */
+  color: #e0e0e0;  /* Texto gris claro */
+}
+
+.dark-theme .navbar {
+  background-color: #333333; /* Barra de navegación oscura */
+  color: white;
+}
+
+/* Ajuste de las cards en modo oscuro */
+.dark-theme .card {
+  background-color: #1e1e1e; /* Fondo oscuro para las cards */
+  color: #e0e0e0;  /* Texto gris claro */
+  border: 1px solid #333333; /* Borde oscuro */
+}
+
+/* Caja de comentarios en Modo Oscuro */
+.dark-theme #comment {
+  background-color: #262626;  /* Fondo aún más oscuro */
+  color: #e0e0e0;  /* Texto gris claro */
+  border: 1px solid #444444; /* Borde oscuro */
+  box-shadow: none;  /* Eliminar sombra */
+}
+
+/* Botones en Modo Oscuro */
+.dark-theme #themeButton, 
+.dark-theme #submitBtn {
+  color: #e0e0e0;  /* Texto claro */
+  border: none;
+}
+
+.dark-theme #themeButton:hover, 
+.dark-theme #submitBtn:hover {
+  background-color: #555555;  /* Color más oscuro al hacer hover */
+}
+
+/* Ajustar el dropdown del navbar en modo oscuro */
+.dark-theme .dropdown-menu {
+  background-color: #333333;
+  color: #e0e0e0;
+}
+
+.dark-theme .dropdown-item {
+  color: #e0e0e0;
+}
+
+.dark-theme .dropdown-item:hover {
+  background-color: #444444; /* Resaltar en hover */
+  color: #ffffff;
+}
+
+/* Links en modo oscuro */
+.dark-theme a {
+  color: #80cbc4; /* Un tono verde/azul oscuro */
+}
+
+.dark-theme a:hover {
+  color: #4db6ac; /* Color más brillante en hover */
+}
+
+/* Calificaciones en Modo Oscuro en estrellas */
+.dark-theme .fas.fa-star {
+  color: #f5b301;  /* Estrellas doradas */
+}
+
+/* Modificar el estilo del footer en modo oscuro */
+.dark-theme footer {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* Spinner cargando en Modo Oscuro */
+.dark-theme .lds-ring div {
+  border-color: #e0e0e0 transparent transparent transparent;
+}
+
+/* Ajustar el estilo del carousel en Modo Oscuro */
+.dark-theme .carousel-inner {
+  background-color: #1e1e1e;
+}
+
+.dark-theme .carousel-control-prev-icon,
+.dark-theme .carousel-control-next-icon {
+  filter: invert(100%); /* Invertir colores para que los iconos sean visibles */
+}
+
+#estiloCambiarFoto, #guardarFotoPerfil {
+  width: fit-content; 
+  padding: 10px 15px; 
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 20px;
+  background-color: #F38020;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 1%;
+  transform: translateX(-50%);
+  left: 45%;
+  position: relative;
+
+}
+
+#imagenPerfil {
+  width: 300px; /* Ajusta el tamaño a lo que prefieras */
+  height: 300px; /* Asegúrate de que sea igual al width */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen no se deforme dentro del contenedor */
 }
