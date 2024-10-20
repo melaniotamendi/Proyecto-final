@@ -13,7 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (userData && userData.profileImage) {
         document.getElementById('imagenPerfil').src = userData.profileImage;
       }
-    }
+
+            // Cargar los datos del formulario si existen
+            if (userData) {
+              document.getElementById('nombre').value = userData.nombre || '';
+              document.getElementById('segundoNombre').value = userData.segundoNombre || '';
+              document.getElementById('apellido').value = userData.apellido || '';
+              document.getElementById('segundoApellido').value = userData.segundoApellido || '';
+              document.getElementById('telefono').value = userData.telefono || '';
+          }
+      }
+    
   
     document.getElementById('logout').addEventListener('click', function() {
       console.log('Cerrando sesión...');
@@ -44,6 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
+  document.addEventListener('DOMContentLoaded', () => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    
+    if (loggedInUser) {
+      // Mostrar el nombre de usuario en el formulario
+      document.getElementById('nombreDeUsuarioForm').textContent = loggedInUser;
+    }
+  });
   // Evento para guardar la imagen en localStorage cuando el usuario hace clic en "Guardar Foto"
   guardarFotoPerfil.addEventListener("click", function () {
     const loggedInUser = localStorage.getItem('loggedInUser'); // Obtén el usuario actual
