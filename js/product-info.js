@@ -337,3 +337,40 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     // Cambiar el modo al hacer click
     themeButton.addEventListener('click', toggleTheme);
   });
+
+  //Se asegura que los datos esten cargados 
+  document.addEventListener("DOMContentLoaded", function () {
+    getJSONData(productInfoURL).then(function (resultObj) {
+      if (resultObj.status === "ok") {
+        const product = resultObj.data;
+        mostrarInformacionProducto(product);
+  
+       //Funcionalidad al hacer click 
+        const comprarBtn = document.getElementById("comprar");
+        comprarBtn.addEventListener("click", function() {
+          // Recupera el carrito actual desde localStorage o crea un arreglo vacío 
+          let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  
+          // Información del producto que necesito
+          const productoComprado = {
+            id: product.id,
+            nombre: product.name,
+            precio: product.cost,
+            imagen: product.images[0] 
+          };
+  
+          // Se agrega el producto comprado al carrito
+          carrito.push(productoComprado);
+  
+          // Se actualiza en el local storage
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+  
+          // Al guardarse salta una alerta
+          alert("Producto agregado al carrito: " + product.name);
+        });
+      }
+    });
+  });
+  
+
+
