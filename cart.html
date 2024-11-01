@@ -31,15 +31,42 @@
           </li>
           <li class="nav-item">
           </li>
+          <li class="nav-item dropdown">
+            <button id="dropdown-btn" class="btn btn-orange dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="nombreDeUsuario"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
+    <br>
+    <h2>Mi Carrito</h2>
+    <br>
     <div id="cartContainer">
       <!-- Se muestra la informacion del producto comprado -->
     </div>
+    <div id="cartSummary" class="cart-summary" style="display: none;">
+      <div class="card float-end">
+    <div class="total-section">
+          <span>TOTAL</span>
+          <span id="totalPrice"></span>
+      </div>
+      <div class="buttons">
+          <button onclick="continuarComprando()">CONTINUAR COMPRANDO</button>
+          <button onclick="finalizarCompra()">FINALIZAR COMPRA</button>
+      </div>
     </div>
+  </div>
+  </div>
+  </div>
+   
   </main>
   <footer class="text-muted">
     <div class="container">
