@@ -622,3 +622,147 @@ a {
   border-radius: 50%; /* Hace que la imagen sea redonda */
   object-fit: cover; /* Asegura que la imagen no se deforme dentro del contenedor */
 }
+
+/* Estilos principales para el contenedor, todos estos estilos son para ajustar la seccion carrito*/
+.cart-container {
+  max-width: 100%;
+  margin: 4px auto;
+  padding: 20px;
+ 
+}
+
+.cart-item {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  
+}
+
+.product-price,
+.product-quantity,
+.product-subtotal {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-summary {
+  margin-left: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+ 
+  margin-top: 5%;
+  
+}
+
+.total-section {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/*estilos para los botones continuar comprando y finalizar compra*/
+.buttons button:nth-child(1) {
+  margin-top: 10%;
+  border-radius: 20px; 
+  padding: 10px 15px; 
+  background-color: #fff;
+  border: 1px solid   #ff6600;
+  color: #ff6600;  
+  
+  cursor: pointer;
+}
+
+.buttons button:nth-child(2) {
+  border-radius: 20px; 
+  padding: 10px 20px; 
+  background-color: #ff6600;
+  border: 1px solid    #fff;
+  color: #fff;  
+  
+  cursor: pointer;
+}
+
+/*estilos para la tabla e imagen del producto en el carrito*/
+#cartContainer table th,
+#cartContainer table td {
+  border-bottom: 1px solid #ddd;
+  padding: 11px;
+  text-align: left;
+}
+
+#cartContainer .product-image {
+ 
+    width: 25%;
+    height: auto;
+    margin-right: 20px;
+  
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#cartContainer .product-details {
+  display: inline-block;
+  vertical-align: middle;
+  flex: 2;
+  font-weight: bold;
+}
+
+/*estilos para el campo de + y - en cantidad*/
+
+#cartContainer .product-quantity {
+  display: flex;
+  align-items: center;
+
+}
+
+#cartContainer .product-quantity button,
+#cartContainer .product-quantity input {
+border: none;
+  padding: 5px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+#cartContainer .product-quantity button {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+#cartContainer .product-quantity input {
+  border-left: none;
+  border-right: none;
+  width: 50px;
+}
+
+#cartContainer .product-quantity button:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#cartContainer .product-quantity button:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/*estilo para la X */
+#cartContainer .delete-button{
+ 
+ padding: 60%;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
