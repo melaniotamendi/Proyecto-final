@@ -4,7 +4,24 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Luego se obtiene los productos del carrito relacionados al usuario
     const carritoKey = `carrito_${nombreDeUsuario}`;
-    const carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
+    let carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
+  
+      // Asegurarse de que cada producto tenga una cantidad y precio válidos
+      carrito.forEach((producto) => {
+        if (typeof producto.cantidad !== 'number' || producto.cantidad < 1) {
+           producto.cantidad = 1; // Asegúrate de que la cantidad siempre sea al menos 1
+        }
+        if (typeof producto.precio !== 'number' || producto.precio < 0) {
+           producto.precio = 0; // Asegúrate de que el precio sea al menos 0
+        }
+        });
+    
+  
+      // Si el carrito cargado no es un array, lo inicializamos 
+      if (!Array.isArray(carrito)) {
+          carrito = [];
+          localStorage.setItem(carritoKey, JSON.stringify(carrito));
+         }
   
     const cartContainer = document.getElementById("cartContainer");
     const cartSummary = document.getElementById("cartSummary");
@@ -12,13 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
     let total = 0;
   
     function actualizarTotal() {
-      total = carrito.reduce((sum, producto) => sum + (producto.precio * producto.cantidad), 0);
+     let total = carrito.reduce((sum, producto) => {
+      // Ver si los valores son válidos
+      const precio = parseFloat(producto.precio) || 0;
+      const cantidad = parseInt(producto.cantidad, 10) || 1;
+      console.log(`Producto: ${producto.nombre}, Precio: ${precio}, Cantidad: ${cantidad}`);
+      return sum + (precio * cantidad);
+        }, 0);
       totalPriceElement.textContent = `$${total.toFixed(2)}`;
     }
   
     function actualizarCantidad(index, cambio) {
-      carrito[index].cantidad += cambio;
-      if (carrito[index].cantidad < 1) carrito[index].cantidad = 1;
+      const cantidadActual = carrito[index].cantidad || 1; // Default a 1 si es undefined o null
+      carrito[index].cantidad = Math.max(cantidadActual + cambio, 1);
       localStorage.setItem(carritoKey, JSON.stringify(carrito));
       renderizarCarrito();
     }
@@ -45,7 +68,17 @@ document.addEventListener("DOMContentLoaded", function () {
             <tbody>
         `;
         carrito.forEach((producto, index) => {
-         
+          // Asegurarse de que precio y cantidad son válidos
+          const precio = parseFloat(producto.precio) || 0;
+          const cantidad = parseInt(producto.cantidad, 10) || 1;
+          // Calcular el subtotal de cada producto 
+          const subtotal = producto.precio * producto.cantidad; 
+        
+          // Chequear errores para que no se visualice NaN
+          if (isNaN(precio) || isNaN(cantidad) || isNaN(subtotal)) {
+          console.error(`Error con el producto ${producto.nombre}: Precio: ${precio}, Cantidad: ${cantidad}, Subtotal: ${subtotal}`);
+          }
+        
           productosHTML += `
             <tr>
               <td>
@@ -62,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <button onclick="actualizarCantidad(${index}, 1)">+</button>
                 </div>
               </td>
-              <td>$aca va el subtotal</td>
+              <td>${subtotal.toFixed(2)}</td>
               <td>
                 <button onclick="eliminarProducto(${index})" class="delete-button">X</button>
               </td>
