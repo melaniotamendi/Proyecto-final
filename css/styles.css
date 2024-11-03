@@ -51,7 +51,7 @@ margin: 0;
 }
 
 #dropdown-btn {
-  margin-top: 10%;
+  margin-top: 15%;
   margin-left: 100%;
 }
 .btn-orange {
@@ -71,7 +71,7 @@ margin: 0;
 }
 
 .dropdown-menu {
-margin-left: 175px;
+margin-left: 80px;
 }
 
 @media (min-width: 768px) {
@@ -420,9 +420,9 @@ a {
 
   /* este es de la tablet */
   @media only screen and (max-width: 1024px) and (min-width: 768px) {
-    #related-products {
-      
-    }
+    /*#related-products {
+      Dejo esto comentado porque no se si tenian que agregarle algo pero estaba vacio y me daba error
+    } */
     #submitBtn {
        padding: auto;
        margin-right: -210px;
@@ -538,7 +538,6 @@ a {
 /* Botones en Modo Oscuro */
 .dark-theme #themeButton, 
 .dark-theme #submitBtn {
-  background-color: #444444;  /* Fondo oscuro para botones */
   color: #e0e0e0;  /* Texto claro */
   border: none;
 }
@@ -598,3 +597,172 @@ a {
   filter: invert(100%); /* Invertir colores para que los iconos sean visibles */
 }
 
+#estiloCambiarFoto, #guardarFotoPerfil {
+  width: fit-content; 
+  padding: 10px 15px; 
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 20px;
+  background-color: #F38020;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 1%;
+  transform: translateX(-50%);
+  left: 45%;
+  position: relative;
+
+}
+
+#imagenPerfil {
+  width: 300px; /* Ajusta el tamaño a lo que prefieras */
+  height: 300px; /* Asegúrate de que sea igual al width */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen no se deforme dentro del contenedor */
+}
+
+/* Estilos principales para el contenedor, todos estos estilos son para ajustar la seccion carrito*/
+.cart-container {
+  max-width: 100%;
+  margin: 4px auto;
+  padding: 20px;
+ 
+}
+
+.cart-item {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  
+}
+
+.product-price,
+.product-quantity,
+.product-subtotal {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-summary {
+  margin-left: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+ 
+  margin-top: 5%;
+  
+}
+
+.total-section {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/*estilos para los botones continuar comprando y finalizar compra*/
+.buttons button:nth-child(1) {
+  margin-top: 10%;
+  border-radius: 20px; 
+  padding: 10px 15px; 
+  background-color: #fff;
+  border: 1px solid   #ff6600;
+  color: #ff6600;  
+  
+  cursor: pointer;
+}
+
+.buttons button:nth-child(2) {
+  border-radius: 20px; 
+  padding: 10px 20px; 
+  background-color: #ff6600;
+  border: 1px solid    #fff;
+  color: #fff;  
+  
+  cursor: pointer;
+}
+
+/*estilos para la tabla e imagen del producto en el carrito*/
+#cartContainer table th,
+#cartContainer table td {
+  border-bottom: 1px solid #ddd;
+  padding: 11px;
+  text-align: left;
+}
+
+#cartContainer .product-image {
+ 
+    width: 25%;
+    height: auto;
+    margin-right: 20px;
+  
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#cartContainer .product-details {
+  display: inline-block;
+  vertical-align: middle;
+  flex: 2;
+  font-weight: bold;
+}
+
+/*estilos para el campo de + y - en cantidad*/
+
+#cartContainer .product-quantity {
+  display: flex;
+  align-items: center;
+
+}
+
+#cartContainer .product-quantity button,
+#cartContainer .product-quantity input {
+border: none;
+  padding: 5px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+#cartContainer .product-quantity button {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+#cartContainer .product-quantity input {
+  border-left: none;
+  border-right: none;
+  width: 50px;
+}
+
+#cartContainer .product-quantity button:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#cartContainer .product-quantity button:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/*estilo para la X */
+#cartContainer .delete-button{
+ 
+ padding: 60%;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}

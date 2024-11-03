@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-orange p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +29,7 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+
           <li class="nav-item dropdown">
             <button id="dropdown-btn" class="btn btn-orange dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <span id="nombreDeUsuario"></span>
@@ -50,11 +51,27 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <br>
+    <h2>Mi Carrito</h2>
+    <br>
+    <div id="cartContainer">
+      <!-- Se muestra la informacion del producto comprado -->
+    </div>
+    <div id="cartSummary" class="cart-summary" style="display: none;">
+      <div class="card float-end">
+    <div class="total-section">
+          <span>TOTAL</span>
+          <span id="totalPrice"></span>
+      </div>
+      <div class="buttons">
+          <button onclick="continuarComprando()">CONTINUAR COMPRANDO</button>
+          <button onclick="finalizarCompra()">FINALIZAR COMPRA</button>
       </div>
     </div>
+  </div>
+  </div>
+  </div>
+   
   </main>
   <footer class="text-muted">
     <div class="container">
