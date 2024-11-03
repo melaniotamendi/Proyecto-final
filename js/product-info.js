@@ -364,27 +364,59 @@ document.getElementById('submitBtn').addEventListener('click', function() {
 });
 
 // Función para agregar el producto al carrito
-function agregarAlCarrito(product, nombreDeUsuario) {
-  const carritoKey = `carrito_${nombreDeUsuario}`;
+//Agregar al carrito
+  function agregarAlCarrito(product, nombreDeUsuario) {
+    const carritoKey = `carrito_${nombreDeUsuario}`;
   
-  // Recupera el carrito actual del usuario o crea un arreglo vacío
-  let carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
-
-  // Información del producto que se necesita
-  const productoComprado = {
-      id: product.id,
-      nombre: product.name,
-      precio: product.cost,
-      imagen: product.images[0]
-  };
-
-  // Agrega el producto comprado al carrito del usuario
-  carrito.push(productoComprado);
-
-  // Actualiza el carrito del usuario en el localStorage
-  localStorage.setItem(carritoKey, JSON.stringify(carrito));
-
-  // Al guardarse, muestra una alerta de confirmación
-  alert("Producto agregado al carrito: " + product.name);
-  console.log("Producto agregado al carrito:", productoComprado);
-}
+    // Recupera el carrito actual del usuario o crea un arreglo vacío
+    let carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
+  
+    // Verifica si el producto ya está en el carrito
+    let productoExistente = carrito.find(item => item.id === product.id);
+  
+    if (productoExistente) {
+        // Si ya existe, incrementa la cantidad y asegúrate de que sea un número
+        productoExistente.cantidad = (productoExistente.cantidad || 0) + 1;
+    } else {
+        // Si no existe, agrégalo con cantidad inicial de 1
+        carrito.push({
+            id: product.id,
+            nombre: product.name,
+            precio: product.cost,
+            imagen: product.images[0],
+            cantidad: 1 // Inicializar cantidad como número
+        });
+    }
+  
+    // Actualiza el carrito en el localStorage
+    localStorage.setItem(carritoKey, JSON.stringify(carrito));
+  
+    // Llama a la función para actualizar el badge en tiempo real
+    actualizarBadgeCarrito();
+  
+    // Muestra una alerta de confirmación
+    alert("Producto agregado al carrito: " + product.name);
+    console.log("Producto agregado al carrito:", carrito);
+  }
+  
+  
+  function actualizarBadgeCarrito() {
+    const nombreDeUsuario = localStorage.getItem("loggedInUser");
+    if (!nombreDeUsuario) {
+        return; // No actualiza si no hay un usuario conectado
+    }
+  
+    const carritoKey = `carrito_${nombreDeUsuario}`;
+    let carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
+  
+    // Suma la cantidad total de productos, asegurándote de que sea numérica
+    let cantidadTotal = carrito.reduce((total, producto) => total + parseInt(producto.cantidad || 0, 10), 0);
+  
+    // Actualiza el contenido del badge
+    document.getElementById('badge-carrito').textContent = cantidadTotal;
+    document.getElementById('badge-carrito-menu').textContent = cantidadTotal;
+  }
+  
+  // Llama a la función al cargar la página
+  document.addEventListener('DOMContentLoaded', actualizarBadgeCarrito);
+  
