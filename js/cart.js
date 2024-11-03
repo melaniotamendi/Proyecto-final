@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       carrito[index].cantidad = Math.max(cantidadActual + cambio, 1);
       localStorage.setItem(carritoKey, JSON.stringify(carrito));
       renderizarCarrito();
+      actualizarBadgeCarrito();
     }
   
     function eliminarProducto(index) {
