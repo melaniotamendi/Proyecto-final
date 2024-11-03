@@ -338,7 +338,33 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     themeButton.addEventListener('click', toggleTheme);
   });
 
+ // Se asegura que todos los datos esten
+ window.addEventListener("load", function () {
+  // Lo relaciona con el user
+  const nombreDeUsuario = localStorage.getItem("loggedInUser");
 
+  getJSONData(productInfoURL).then(function (resultObj) {
+      if (resultObj.status === "ok") {
+          const product = resultObj.data;
+          mostrarInformacionProducto(product);
+
+          // Se le da funcionalidad al boton comprar
+          const comprarBtn = document.getElementById("comprar");
+          if (comprarBtn) {
+              comprarBtn.addEventListener("click", function () {
+                  agregarAlCarrito(product, nombreDeUsuario);
+              });
+          } else {
+              console.log("Botón de comprar no encontrado");
+          }
+      } else {
+          console.log("Error al obtener la información del producto:", resultObj.data);
+      }
+  });
+});
+
+// Función para agregar el producto al carrito
+//Agregar al carrito
   function agregarAlCarrito(product, nombreDeUsuario) {
     const carritoKey = `carrito_${nombreDeUsuario}`;
   
@@ -393,5 +419,4 @@ document.getElementById('submitBtn').addEventListener('click', function() {
   
   // Llama a la función al cargar la página
   document.addEventListener('DOMContentLoaded', actualizarBadgeCarrito);
-  
   

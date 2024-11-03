@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-orange p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,16 +64,76 @@
       </div>
     </div>
   </nav>
+  <div class="theme-toggle">
+    <button id="themeButton">Modo Oscuro</button>
+  </div>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="card mt-5 custom-card"" style="width: 100%">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img id="imagenPerfil" src="img/icon-7797704_1280.png"  alt="User image"> 
+            <div class="foto-perfil">
+              <!-- Este input es para cambiar foto de perfil -->
+              <br><br>
+              <label id="estiloCambiarFoto" for="inputFotoPerfil">Elegir Foto</label>
+              <input type="file" id="inputFotoPerfil" accept="image/*" style="display:none;"> 
+              <br><br> 
+              </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="card-body">
+             <form id="registroForm" action="#" method="get" class="row mt-4" novalidate>
+              <div class="col"> </div>
+               <h4> Información Personal </h4>
+               <hr class="my-4">
+               <div class="col-sm-12" style="color: red;">Campos obligatorios* </div>
+                
+               <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="nombre" class="form-label">Nombre*</label>
+                  <input type="text" class="form-control" id="nombre" required>
+                  <div class="invalid-feedback">Por favor ingresa un nombre.</div>
+                </div>
+                <div class="col-sm-6">
+                  <label for="segundoNombre" class="form-label"> Segundo Nombre</label>
+                  <input type="text" class="form-control" id="segundoNombre">
+                
+                </div>
+
+                <div class="col-sm-6">
+                  <label for="apellido" class="form-label">Apellido*</label>
+                  <input type="text" class="form-control" id="apellido" required>
+                  <div class="invalid-feedback">Por favor ingresa un apellido.</div>
+                </div>
+                <div class="col-sm-6">
+                  <label for="segundoApellido" class="form-label"> Segundo Apellido</label>
+                  <input type="text" class="form-control" id="segundoApellido">
+                </div>
+    
+    
+                <div class="col-12">
+                  <label for="usuario" class="form-label">Nombre de Usuario</label>
+                  <span id="nombreDeUsuarioForm" class="form-control"></span>
+                </div>
+    
+                <div class="col-sm-12">
+                  <label for="telefono" class="form-label">Teléfono de contacto</label>
+                  <input type="tel" class="form-control" id="telefono" >
+                </div>
+
+
+               <div class="col-sm-12">  <button id="guardarFotoPerfil" class="button" type="submit">Guardar Cambios</button> </div>
+                
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
+  </main>  
         <a href="#">Volver arriba</a>
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
