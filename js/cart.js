@@ -1,3 +1,15 @@
+// Para manejar el nombre del usuario y el botón de cerrar sesión
+document.addEventListener('DOMContentLoaded', () => {
+  const loggedInUser = localStorage.getItem('loggedInUser');
+  if (loggedInUser) {
+    document.getElementById('nombreDeUsuario').textContent = loggedInUser;
+  }
+  document.getElementById('logout').addEventListener('click', function() {
+    localStorage.removeItem('loggedInUser'); // Cierra sesión
+    window.location.href = 'login.html'; // Redirige al usuario a la página de inicio de sesión
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     // Se obtiene el nombre de usuario actual
     const nombreDeUsuario = localStorage.getItem("loggedInUser");
