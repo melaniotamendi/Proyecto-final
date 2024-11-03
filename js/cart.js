@@ -156,5 +156,9 @@ function actualizarBadgeCarrito() {
   
   // Llama a la función al cargar la página
   document.addEventListener('DOMContentLoaded', actualizarBadgeCarrito);
-  
+
+//funcion para redirigir a categorias
+  function continuarComprando() {
+    window.location.href = "categories.html";
+}
   
