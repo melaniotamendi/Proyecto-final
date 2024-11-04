@@ -395,7 +395,26 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     actualizarBadgeCarrito();
   
     // Muestra una alerta de confirmación
-    alert("Producto agregado al carrito: " + product.name);
+     // Muestra una alerta de confirmación
+    Swal.fire({
+      title: "Producto agregado al carrito",
+      text: product.name,
+      icon: "success",  // Usa "success" para un ícono predeterminado de check en verde
+      iconHtml: "👌🏻",  // Alternativamente, puedes personalizar el icono con un emoji
+      confirmButtonText: "Continuar comprando",
+      cancelButtonText: "Ver carrito",
+      showCancelButton: true,
+      showCloseButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Acción para "Continuar comprando"
+        window.location.href = "product-info.html"; // Redirige a la página de productos
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Acción para "Ver carrito"
+        window.location.href = "cart.html"; // Redirige a la página del carrito
+      }
+    });
+    
     console.log("Producto agregado al carrito:", carrito);
   }
   
