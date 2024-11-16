@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       carrito.splice(index, 1);
       localStorage.setItem(carritoKey, JSON.stringify(carrito));
       renderizarCarrito();
+      actualizarBadgeCarrito();
     }
   
     function renderizarCarrito() {
@@ -135,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.eliminarProducto = eliminarProducto;
   
     renderizarCarrito();
+    actualizarBadgeCarrito();
   });
 
 function actualizarBadgeCarrito() {

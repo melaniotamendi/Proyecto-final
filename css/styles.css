@@ -435,6 +435,16 @@ a {
       }
       .dropdown-menu {
         margin-right: auto;
+        width: 5px;
+        margin-left: 200px;
+        }
+
+        #comprar {
+          margin-left: 24px;
+        }
+
+        #themeButton {
+          margin-left: -75px;
         }
   }
 
@@ -484,6 +494,24 @@ a {
   }
   #navbarNav {
     margin-left: -30%;
+  }
+
+  .dropdown-menu {
+    width: 5px;
+    margin-left: 210px;
+
+    }
+
+    .comprar {
+      display: felx;
+      align-items: center;
+    }
+
+  #comprar {
+    display: flex; 
+    justify-content: center; 
+    margin-top: auto; 
+    margin-left: 70px;
   }
   }
 
@@ -766,3 +794,11 @@ border: none;
   border: none;
   border-radius: 5px;
 }
+
+/* CSS para cambiar el borde del ícono de éxito (success) */
+.swal2-icon.custom-success-icon {
+  border: 3px solid #F38020;  /* Borde naranja */
+  border-radius: 50%;         /* Bordes redondeados (círculo) */
+  padding: 8px;               /* Opcional: Espacio entre el borde y el ícono */
+}
+

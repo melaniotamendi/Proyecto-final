@@ -394,17 +394,22 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     // Llama a la función para actualizar el badge en tiempo real
     actualizarBadgeCarrito();
   
-    // Muestra una alerta de confirmación
+  
      // Muestra una alerta de confirmación
     Swal.fire({
       title: "Producto agregado al carrito",
       text: product.name,
       icon: "success",  // Usa "success" para un ícono predeterminado de check en verde
-      iconHtml: "👌🏻",  // Alternativamente, puedes personalizar el icono con un emoji
+      iconHtml: "🛒",  // Alternativamente, puedes personalizar el icono con un emoji
       confirmButtonText: "Continuar comprando",
       cancelButtonText: "Ver carrito",
       showCancelButton: true,
-      showCloseButton: true
+      showCloseButton: true,
+      confirmButtonColor: '#F38020',  // Color naranja para el botón "Confirmar"
+      cancelButtonColor: '#F38020',   // Color naranja para el botón "Cancelar"
+      customClass: {
+        icon: 'custom-success-icon'  // Aplica una clase personalizada al ícono de éxito
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         // Acción para "Continuar comprando"
