@@ -993,3 +993,36 @@ button {
     margin-left: -20px;
   }
  }
+
+ @media only screen and (max-width: 896px) and (min-width: 414px) {
+  #cartContainer {
+    display: flex;
+    margin-top: -50px;
+    margin-left: -60px;
+    padding: 10px;
+    box-sizing: border-box;
+    transform: scale(0.8);
+  }
+  
+  #tituloCart {
+    margin-left: 10px;
+  }
+  
+  .payment-shipping-cards {
+    transform: scale(0.6);
+    margin-left: 10px;
+    padding: 10px;
+    margin-top: -150px;
+  }
+  
+  #cartSummary {
+    transform: scale(0.76);
+    padding: 10px;
+    margin-top: -130px;
+    margin-left: -100;
+  }  
+  
+  .buttons {
+    margin-left: -20px;
+  }
+ }
