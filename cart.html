@@ -110,6 +110,42 @@
             </div>
           </div>
           <button onclick="abrirModal()" class="agregar-direccion-btn">Agregar dirección de envío</button>
+            
+          
+  <!--modal para agregar direccion-->
+  <div id="myModal" class="modal">
+  <div class="modal-content">
+  <span class="close">&times;</span>
+  <form id="direForm" method="get" action="index.html">
+  <div class="mb-3">
+  <label for="depa" class="form-label">Departamento</label>
+  <input type="text" class="form-control" id="departamento" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Localidad</label>
+  <input type="text" class="form-control" id="localidad" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Calle</label>
+  <input type="text" class="form-control" id="calle" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Numero</label>
+  <input type="number" class="form-control" id="numero" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Esquina</label>
+  <input type="text" class="form-control" id="esquina" name="text" required>
+  </div>
+  <button type="button" class="btn btn-primary" onclick="guardarDireccion()">Guardar Información</button> <!--modificar boton-->
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
         </div>
       </div>
     <div id="cartSummary" class="cart-summary" style="display: none;">
