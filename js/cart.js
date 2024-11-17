@@ -166,63 +166,46 @@ function actualizarBadgeCarrito() {
     window.location.href = "categories.html";
 }
 
+
+
 function finalizarCompra() {
-    
-    // validación
-    const addressFields = [
-        document.getElementById('inputDireccion'), 
-        document.getElementById('inputCiudad'),    
-        document.getElementById('inputCodigoPostal')
-    ];
-    const selectedShipping = document.querySelector('input[name="shipping"]:checked');
-    const selectedPayment = document.querySelector('input[name="payment"]:checked');
-   
-    //validación campos de dirección
-    const addressComplete = addressFields.every(field => field && field.value.trim() !== "");
-    
-    //validación cantidad válida
-    const cantidadValida = carrito.every(producto => producto.cantidad > 0);
+  if (!carrito || carrito.length === 0) {
+      alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+      return;
+  }
 
-    //condicionales pago y envío
-    if (!addressComplete) {
-        alert("Por favor, complete todos los campos de la dirección.");
-        return;
-    }
+  const direccionKey = `direccion_${loggedInUser}`;
+  const direccion = JSON.parse(localStorage.getItem(direccionKey));
 
-    if (!selectedShipping) {
-        alert("Por favor, seleccione un tipo de envío.");
-        return;
-    }
+  if (!direccion || Object.values(direccion).some(value => !value || value.trim() === "")) {
+      alert("Por favor, asegúrate de ingresar y guardar una dirección válida.");
+      return;
+  }
 
-    if (!cantidadValida) {
-        alert("La cantidad de cada producto debe ser mayor a 0.");
-        return;
-    }
+  const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+  if (!selectedShipping) {
+      alert("Por favor, selecciona un tipo de envío.");
+      return;
+  }
 
-    if (!selectedPayment) {
-        alert("Por favor, seleccione una forma de pago.");
-        return;
-    }
+  const cantidadValida = carrito.every(producto => producto.cantidad > 0);
+  if (!cantidadValida) {
+      alert("La cantidad de cada producto debe ser mayor a 0.");
+      return;
+  }
 
-    // validar forma de pago que se selecciona
-    let paymentFieldsComplete = true;
-    if (selectedPayment.value === 'creditCard') {
-        paymentFieldsComplete = document.getElementById('inputNumeroTarjeta').value.trim() !== "" &&
-                                document.getElementById('inputFechaExpiracion').value.trim() !== "" &&
-                                document.getElementById('inputCodigoSeguridad').value.trim() !== "";
-    } else if (selectedPayment.value === 'bankTransfer') {
-        paymentFieldsComplete = document.getElementById('inputNumeroCuenta').value.trim() !== "";
-    }
+  const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked');
+  if (!selectedPayment) {
+      alert("Por favor, selecciona una forma de pago.");
+      return;
+  }
 
-    console.log("Payment fields complete:", paymentFieldsComplete);
-
-
-    if (!paymentFieldsComplete) {
-        alert("Complete todos los campos para la forma de pago seleccionada.");
-        return;
-    }
-
-    alert("¡Compra exitosa!");
+  // si todo está validado
+  alert("¡Compra finalizada con éxito! Gracias por tu pedido.");
+  carrito = [];
+  localStorage.setItem(carritoKey, JSON.stringify(carrito));
+  actualizarBadgeCarrito();
+  renderizarCarrito();
 }
 
   
