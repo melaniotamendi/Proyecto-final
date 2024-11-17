@@ -193,25 +193,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const span = document.getElementsByClassName("close")[0];
   const guardarBtn = document.getElementById("guardarDireccionBtn");
   const loggedInUser = localStorage.getItem("loggedInUser");
+
   // Función para abrir el modal
   function abrirModal() {
     modal.style.display = "block";
   }
+
   // Cerrar el modal al hacer clic en el botón de cerrar (X)
   span.onclick = function () {
     modal.style.display = "none";
   };
+
   // Cerrar el modal al hacer clic fuera del contenido del modal
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   };
+
   // Hacer disponible la función abrirModal globalmente
   window.abrirModal = abrirModal;
+
   // Función para guardar la dirección en el localStorage
   function guardarDireccion(event) {
     event.preventDefault(); // Detiene el comportamiento predeterminado del formulario
+
     if (!loggedInUser) {
       alert("Debes iniciar sesión para guardar tu dirección.");
       return;
@@ -247,12 +253,51 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.style.display = "none";
     alert("Dirección guardada exitosamente.");
   }
+
   // Asignar evento al botón guardar
   guardarBtn.addEventListener("click", guardarDireccion);
 });
 
 
+
 function finalizarCompra() {
-@@ -300,4 +306,3 @@ function finalizarCompra() {
+  if (!carrito || carrito.length === 0) {
+      alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+      return;
+  }
+
+  const direccionKey = `direccion_${loggedInUser}`;
+  const direccion = JSON.parse(localStorage.getItem(direccionKey));
+
+  if (!direccion || Object.values(direccion).some(value => !value || value.trim() === "")) {
+      alert("Por favor, asegúrate de ingresar y guardar una dirección válida.");
+      return;
+  }
+
+  const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+  if (!selectedShipping) {
+      alert("Por favor, selecciona un tipo de envío.");
+      return;
+  }
+
+  const cantidadValida = carrito.every(producto => producto.cantidad > 0);
+  if (!cantidadValida) {
+      alert("La cantidad de cada producto debe ser mayor a 0.");
+      return;
+  }
+
+  const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked');
+  if (!selectedPayment) {
+      alert("Por favor, selecciona una forma de pago.");
+      return;
+  }
+
+  // si todo está validado
+  alert("¡Compra finalizada con éxito! Gracias por tu pedido.");
+  carrito = [];
+  localStorage.setItem(carritoKey, JSON.stringify(carrito));
+  actualizarBadgeCarrito();
   renderizarCarrito();
 }
+
+  
