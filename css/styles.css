@@ -927,6 +927,10 @@ button {
   padding: 8px;               /* Opcional: Espacio entre el borde y el ícono */
 }
 
+#cartSummary {
+  margin-left: 830px;
+}
+
 
 /*CSS PARA EL CART HTML, CELULAR */
 
