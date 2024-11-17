@@ -127,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
         cartContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
         // Oculta el resumen y botones si no hay productos
         cartSummary.style.display = "none";
+        paymentCard.style.display = "none";
+        shippingCard.style.display = "none";
       }
       actualizarTotal();
     }
