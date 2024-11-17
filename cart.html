@@ -64,21 +64,22 @@
        <div class="payment-shipping-cards"> 
         <!-- Tarjeta de Forma de Pago -->
         <div class="card payment-method">
-          <div class="card-header">
-            FORMA DE PAGO
+       <div class="card" style="flex: 0.48; min-width: 300px;">
+        <div class="card-header">
+          FORMA DE PAGO
+        </div>
+        <div class="card-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="creditCard" name="payment" value="creditCard">
+            <label class="form-check-label" for="creditCard">Tarjeta de Crédito </label>
           </div>
-          <div class="card-body">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="creditCard" value="creditCard">
-              <label class="form-check-label" for="creditCard">Tarjeta de Crédito</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="bankTransfer" value="bankTransfer">
-              <label class="form-check-label" for="bankTransfer">Transferencia Bancaria</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="cash" value="cash">
-              <label class="form-check-label" for="cash">Efectivo</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="bankTransfer" name="payment" value="bankTransfer">
+            <label class="form-check-label" for="bankTransfer">Transferencia Bancaria </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="cash" name="payment" value="cash">
+            <label class="form-check-label" for="cash">Efectivo </label>
             </div>
            <!-- Contenedor para imágenes -->
         <div class="payment-icons">
@@ -96,15 +97,15 @@
           </div>
           <div class="card-body">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="shipping" id="standard" value="0.05" onchange="actualizarTotal()">
+              <input class="form-check-input" type="radio" id="standard" name="shipping" value="standard">
               <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="shipping" id="express" value="0.07" onchange="actualizarTotal()">
+              <input class="form-check-input" type="radio" id="express" name="shipping" value="express">
               <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="shipping" id="premium" value="0.15" onchange="actualizarTotal()">
+              <input class="form-check-input" type="radio" id="premium" name="shipping" value="premium">
               <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
             </div>
           </div>
