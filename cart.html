@@ -57,9 +57,68 @@
     <div id="cartContainer">
       <!-- Se muestra la informacion del producto comprado -->
     </div>
+       <!-- Contenedor para las tarjetas de Forma de Pago y Tipos de Envío -->
+       <div class="payment-shipping-cards"> 
+        <!-- Tarjeta de Forma de Pago -->
+        <div class="card payment-method">
+          <div class="card-header">
+            FORMA DE PAGO
+          </div>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="creditCard" value="creditCard">
+              <label class="form-check-label" for="creditCard">Tarjeta de Crédito</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="bankTransfer" value="bankTransfer">
+              <label class="form-check-label" for="bankTransfer">Transferencia Bancaria</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="cash" value="cash">
+              <label class="form-check-label" for="cash">Efectivo</label>
+            </div>
+           <!-- Contenedor para imágenes -->
+        <div class="payment-icons">
+          <img src="img/visa.png" alt="Visa" class="icon">
+          <img src="img/mastercard.png" alt="MasterCard" class="icon">
+          <img src="img/paypal.png" alt="PayPal" class="icon">
+        </div>
+      </div>
+    </div>
+      
+        <!-- Tarjeta de Tipos de Envío -->
+        <div class="card shipping-card">
+          <div class="card-header">
+            TIPOS DE ENVÍO
+          </div>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="shipping" id="standard" value="0.05" onchange="actualizarTotal()">
+              <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="shipping" id="express" value="0.07" onchange="actualizarTotal()">
+              <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="shipping" id="premium" value="0.15" onchange="actualizarTotal()">
+              <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
+            </div>
+          </div>
+          <button onclick="abrirModal()" class="agregar-direccion-btn">Agregar dirección de envío</button>
+        </div>
+      </div>
     <div id="cartSummary" class="cart-summary" style="display: none;">
       <div class="card float-end">
     <div class="total-section">
+          <span>Subtotal</span>
+          <span id="subtot"></span>
+          <br>
+          <span>Costo de Envío</span>
+          <span id="costenvio"></span>
+          <br>
+          <br>
+          <br>
           <span>TOTAL</span>
           <span id="totalPrice"></span>
       </div>
