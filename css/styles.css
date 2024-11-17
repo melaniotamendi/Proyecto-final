@@ -1062,3 +1062,9 @@ button {
   }
  }
 
+/*en cart para que los campos del formulario del modal si no están completos se marquen de rojo*/
+.campo-invalido {
+  border: 2px solid red;
+  background-color: #ffe5e5;
+}
+
