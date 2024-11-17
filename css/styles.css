@@ -927,4 +927,38 @@ button {
   padding: 8px;               /* Opcional: Espacio entre el borde y el ícono */
 }
 
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  overflow: hidden; 
+}
 
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el modal */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%; 
+  height: auto; 
+  max-height: 90vh; 
+  overflow: hidden; /* Elimina barras de desplazamiento */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+
+.btn-modal {
+  background-color: black;
+  color: white;
+  border: none;
+  width: 100%;
+}
