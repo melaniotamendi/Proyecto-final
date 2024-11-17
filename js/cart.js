@@ -214,50 +214,65 @@ document.addEventListener('DOMContentLoaded', () => {
   // Hacer disponible la función abrirModal globalmente
   window.abrirModal = abrirModal;
 
-  // Función para guardar la dirección en el localStorage
-  function guardarDireccion(event) {
-    event.preventDefault(); // Detiene el comportamiento predeterminado del formulario
+ // Función para validar campos vacíos
+ function validarCamposVacios() {
+  const campos = document.querySelectorAll("#direForm .form-control");
+  let esValido = true;
 
-    if (!loggedInUser) {
-      alert("Debes iniciar sesión para guardar tu dirección.");
-      return;
+  campos.forEach(campo => {
+    if (!campo.value.trim()) {
+      campo.classList.add("campo-invalido");
+      esValido = false;
+    } else {
+      campo.classList.remove("campo-invalido");
     }
+  });
 
-    // Obtener valores de los inputs
-    const departamentoInput = document.getElementById("departamento").value.trim();
-    const localidadInput = document.getElementById("localidad").value.trim();
-    const calleInput = document.getElementById("calle").value.trim();
-    const numeroInput = document.getElementById("numero").value.trim();
-    const esquinaInput = document.getElementById("esquina").value.trim();
+  return esValido;
+}
 
-    // Validación de campos obligatorios
-    if (!departamentoInput || !localidadInput || !calleInput || !numeroInput || !esquinaInput) {
-      alert("Todos los campos marcados son obligatorios. Por favor, completa la dirección.");
-      return;
-    }
-
-    // Crear objeto dirección
-    const direccion = {
-      departamento: departamentoInput,
-      localidad: localidadInput,
-      calle: calleInput,
-      numero: numeroInput,
-      esquina: esquinaInput || null // Esquina es opcional
-    };
-
-    // Guardar en localStorage
-    const direccionKey = `direccion_${loggedInUser}`;
-    localStorage.setItem(direccionKey, JSON.stringify(direccion));
-
-    // Cerrar modal y mostrar mensaje de éxito
-    modal.style.display = "none";
-    alert("Dirección guardada exitosamente.");
+// Función para guardar la dirección en el localStorage
+function guardarDireccion(event) {
+  if (!loggedInUser) {
+    alert("Debes iniciar sesión para guardar tu dirección.");
+    return;
   }
 
-  // Asignar evento al botón guardar
-  guardarBtn.addEventListener("click", guardarDireccion);
-});
+  // Obtener valores de los inputs
+  const departamentoInput = document.getElementById("departamento").value.trim();
+  const localidadInput = document.getElementById("localidad").value.trim();
+  const calleInput = document.getElementById("calle").value.trim();
+  const numeroInput = document.getElementById("numero").value.trim();
+  const esquinaInput = document.getElementById("esquina").value.trim();
 
+  // Crear objeto dirección
+  const direccion = {
+    departamento: departamentoInput,
+    localidad: localidadInput,
+    calle: calleInput,
+    numero: numeroInput,
+    esquina: esquinaInput || null // Esquina es opcional
+  };
+
+  // Guardar en localStorage
+  const direccionKey = `direccion_${loggedInUser}`;
+  localStorage.setItem(direccionKey, JSON.stringify(direccion));
+
+  // Cerrar modal y mostrar mensaje de éxito
+  modal.style.display = "none";
+  alert("Dirección guardada exitosamente.");
+}
+
+// Asignar evento al botón guardar
+guardarBtn.addEventListener("click", function(event) {
+  event.preventDefault(); // Detiene el comportamiento predeterminado del botón
+  if (validarCamposVacios()) {
+    guardarDireccion(event); // Solo guarda si todos los campos son válidos
+  } else {
+    alert("Por favor, completa todos los campos obligatorios.");
+  }
+});
+});
 
 
 function finalizarCompra() {
