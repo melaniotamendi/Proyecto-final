@@ -676,7 +676,7 @@ a {
 }
 
 .cart-summary {
-  margin-left: 50%;
+  margin-left: 46%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -795,10 +795,136 @@ border: none;
   border-radius: 5px;
 }
 
+
+.payment-shipping-cards {
+  display: flex;
+  justify-content: center; 
+  align-items: stretch; 
+  gap: 2rem; /* Espaciado entre tarjetas */
+  width: 100%; 
+}
+
+/* Estilo general para las tarjetas */
+.payment-shipping-cards .card {
+  flex: 0 1 40%; /* Tarjeta ocupa hasta el 40% del contenedor */
+  box-sizing: border-box; 
+  min-width: 280px; 
+  max-width: 350px; 
+  display: flex;
+  flex-direction: column; /* Contenido apilado verticalmente */
+  justify-content: space-between; 
+}
+
+.payment-shipping-cards .shipping-card {
+  margin-right: 18%;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 23px;
+  margin-top: 0%;
+  flex-basis: 40%;
+  width: 50%;
+  max-width: 530px; 
+}
+
+.payment-shipping-cards .payment-method {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 7px;
+  margin-top: 0%;
+  flex-basis: 40%;
+  width: 50%; 
+  max-width: 530px; 
+}
+
+
+/* Estilo para los encabezados de la tarjeta */
+.card-header {
+  background-color: #f8f9fa; 
+  font-weight: bold;
+  text-align: center;
+  padding: 0.75rem 1rem;
+}
+
+/* Estilo para el cuerpo de las tarjetas */
+.card-body {
+  padding: 1rem;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body .form-check {
+  margin-bottom: 0.5rem; 
+}
+
+.card-body button {
+  align-self: center; 
+  margin-top: 1rem; 
+}
+
+/* Estilo para las imágenes de pago */
+.payment-icons {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  gap: 1rem; 
+  margin-top: 1rem;
+}
+
+.payment-icons .icon {
+  width: 60px; 
+  height: auto; 
+}
+
+/* Estilo para las etiquetas dentro de las tarjetas */
+.payment-shipping-cards .form-check label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+.payment-shipping-cards .card-header,
+.payment-shipping-cards .card-body label {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #ff7a00; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.agregar-direccion-btn {
+  margin-top: 0%;
+  border-radius: 20px; 
+  padding: 10px 15px; 
+  background-color: #fff;
+  border: 1px solid #ff6600;
+  color: #ff6600;  
+  cursor: pointer;
+  margin-left: 20px;
+  width: 50%;
+}
+
 /* CSS para cambiar el borde del ícono de éxito (success) */
 .swal2-icon.custom-success-icon {
   border: 3px solid #F38020;  /* Borde naranja */
   border-radius: 50%;         /* Bordes redondeados (círculo) */
   padding: 8px;               /* Opcional: Espacio entre el borde y el ícono */
 }
+
 
