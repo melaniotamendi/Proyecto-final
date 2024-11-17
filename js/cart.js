@@ -1,3 +1,7 @@
+let loggedInUser = localStorage.getItem("loggedInUser");
+let carritoKey = `carrito_${loggedInUser}`;
+let carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
+
 // Para manejar el nombre del usuario y el botón de cerrar sesión
 document.addEventListener('DOMContentLoaded', () => {
   const loggedInUser = localStorage.getItem('loggedInUser');
