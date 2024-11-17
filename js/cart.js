@@ -39,22 +39,33 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem(carritoKey, JSON.stringify(carrito));
          }
   
-    const cartContainer = document.getElementById("cartContainer");
-    const cartSummary = document.getElementById("cartSummary");
-    const totalPriceElement = document.getElementById("totalPrice");
-    let total = 0;
-  
-    function actualizarTotal() {
-     let total = carrito.reduce((sum, producto) => {
-      // Ver si los valores son válidos
-      const precio = parseFloat(producto.precio) || 0;
-      const cantidad = parseInt(producto.cantidad, 10) || 1;
-      console.log(`Producto: ${producto.nombre}, Precio: ${precio}, Cantidad: ${cantidad}`);
-      return sum + (precio * cantidad);
-        }, 0);
-      totalPriceElement.textContent = `$${total.toFixed(2)}`;
-    }
-  
+         const cartContainer = document.getElementById("cartContainer"); 
+         const cartSummary = document.getElementById("cartSummary"); 
+         const totalPriceElement = document.getElementById("totalPrice"); 
+         let total = 0; 
+         
+         function actualizarTotal() {
+            const carritoKey = `carrito_${localStorage.getItem("loggedInUser")}`;
+             let carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
+              // Calcular el subtotal 
+              let subtotal = carrito.reduce((sum, producto) => { const precio = parseFloat(producto.precio) || 0;
+                const cantidad = parseInt(producto.cantidad, 10) || 1; 
+                return sum + (precio * cantidad); }, 0); 
+                // Mostrar el subtotal en el elemento con id="subtot" 
+                document.getElementById("subtot").textContent = `$${subtotal.toFixed(2)}`; 
+         
+                // Obtener el valor de la opción de envío seleccionada 
+                const shippingOption = document.querySelector('input[name="shipping"]:checked');
+                 const shippingPercentage = shippingOption ? parseFloat(shippingOption.value) : 0; 
+         
+                 // Calcular el costo de envío y el total final 
+                 const shippingCost = subtotal * shippingPercentage; 
+                 const totalFinal = subtotal + shippingCost; 
+         
+                 // Actualizar en el DOM
+                  document.getElementById("costenvio").textContent = `$${shippingCost.toFixed(2)}`; 
+                  document.getElementById("totalPrice").textContent = `$${totalFinal.toFixed(2)}`;
+              }
     function actualizarCantidad(index, cambio) {
       const cantidadActual = carrito[index].cantidad || 1; // Default a 1 si es undefined o null
       carrito[index].cantidad = Math.max(cantidadActual + cambio, 1);
@@ -142,6 +153,11 @@ document.addEventListener("DOMContentLoaded", function () {
     window.eliminarProducto = eliminarProducto;
   
     renderizarCarrito();
+     // Agregar evento change a las opciones de envío 
+const shippingOptions = document.querySelectorAll('input[name="shipping"]'); 
+shippingOptions.forEach(option => { 
+  option.addEventListener('change', actualizarTotal);
+ });
     actualizarBadgeCarrito();
   });
 
@@ -175,60 +191,73 @@ function actualizarBadgeCarrito() {
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById("myModal");
   const span = document.getElementsByClassName("close")[0];
-  
+  const guardarBtn = document.getElementById("guardarDireccionBtn");
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
   // Función para abrir el modal
   function abrirModal() {
-  modal.style.display = "block";
+    modal.style.display = "block";
   }
-  
+
   // Cerrar el modal al hacer clic en el botón de cerrar (X)
-  span.onclick = function() {
-  modal.style.display = "none";
-  }
-  
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
   // Cerrar el modal al hacer clic fuera del contenido del modal
-  window.onclick = function(event) {
-  if (event.target == modal) {
-  modal.style.display = "none";
-  }
-  }
-  
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
   // Hacer disponible la función abrirModal globalmente
   window.abrirModal = abrirModal;
-  
-  // Función para guardar la dirección en el localStorage
-  window.guardarDireccion = function() {
 
-  if (!loggedInUser) {
-  alert("Debes iniciar sesión para guardar tu dirección.");
-  return;
+  // Función para guardar la dirección en el localStorage
+  function guardarDireccion(event) {
+    event.preventDefault(); // Detiene el comportamiento predeterminado del formulario
+
+    if (!loggedInUser) {
+      alert("Debes iniciar sesión para guardar tu dirección.");
+      return;
+    }
+
+    // Obtener valores de los inputs
+    const departamentoInput = document.getElementById("departamento").value.trim();
+    const localidadInput = document.getElementById("localidad").value.trim();
+    const calleInput = document.getElementById("calle").value.trim();
+    const numeroInput = document.getElementById("numero").value.trim();
+    const esquinaInput = document.getElementById("esquina").value.trim();
+
+    // Validación de campos obligatorios
+    if (!departamentoInput || !localidadInput || !calleInput || !numeroInput || !esquinaInput) {
+      alert("Todos los campos marcados son obligatorios. Por favor, completa la dirección.");
+      return;
+    }
+
+    // Crear objeto dirección
+    const direccion = {
+      departamento: departamentoInput,
+      localidad: localidadInput,
+      calle: calleInput,
+      numero: numeroInput,
+      esquina: esquinaInput || null // Esquina es opcional
+    };
+
+    // Guardar en localStorage
+    const direccionKey = `direccion_${loggedInUser}`;
+    localStorage.setItem(direccionKey, JSON.stringify(direccion));
+
+    // Cerrar modal y mostrar mensaje de éxito
+    modal.style.display = "none";
+    alert("Dirección guardada exitosamente.");
   }
-  
-  // Captura los valores del formulario
-  const departamento = document.getElementById("departamento").value;
-  const localidad = document.getElementById("localidad").value;
-  const calle = document.getElementById("calle").value;
-  const numero = document.getElementById("numero").value;
-  const esquina = document.getElementById("esquina").value;
-  
-  // Crea un objeto con los datos de la dirección
-  const direccion = {
-  departamento,
-  localidad,
-  calle,
-  numero,
-  esquina
-  };
-  
-  // Guarda la dirección en localStorage con la clave asociada al usuario
-  const direccionKey = `direccion_${loggedInUser}`;
-  localStorage.setItem(direccionKey, JSON.stringify(direccion));
-  
-  // Cierra el modal y muestra un mensaje de éxito
-  modal.style.display = "none";
-  alert("Dirección guardada exitosamente.");
-};
+
+  // Asignar evento al botón guardar
+  guardarBtn.addEventListener("click", guardarDireccion);
 });
+
 
 
 function finalizarCompra() {
