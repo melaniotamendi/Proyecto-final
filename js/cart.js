@@ -172,6 +172,65 @@ function actualizarBadgeCarrito() {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById("myModal");
+  const span = document.getElementsByClassName("close")[0];
+  
+  // Función para abrir el modal
+  function abrirModal() {
+  modal.style.display = "block";
+  }
+  
+  // Cerrar el modal al hacer clic en el botón de cerrar (X)
+  span.onclick = function() {
+  modal.style.display = "none";
+  }
+  
+  // Cerrar el modal al hacer clic fuera del contenido del modal
+  window.onclick = function(event) {
+  if (event.target == modal) {
+  modal.style.display = "none";
+  }
+  }
+  
+  // Hacer disponible la función abrirModal globalmente
+  window.abrirModal = abrirModal;
+  
+  // Función para guardar la dirección en el localStorage
+  window.guardarDireccion = function() {
+
+  if (!loggedInUser) {
+  alert("Debes iniciar sesión para guardar tu dirección.");
+  return;
+  }
+  
+  // Captura los valores del formulario
+  const departamento = document.getElementById("departamento").value;
+  const localidad = document.getElementById("localidad").value;
+  const calle = document.getElementById("calle").value;
+  const numero = document.getElementById("numero").value;
+  const esquina = document.getElementById("esquina").value;
+  
+  // Crea un objeto con los datos de la dirección
+  const direccion = {
+  departamento,
+  localidad,
+  calle,
+  numero,
+  esquina
+  };
+  
+  // Guarda la dirección en localStorage con la clave asociada al usuario
+  const direccionKey = `direccion_${loggedInUser}`;
+  localStorage.setItem(direccionKey, JSON.stringify(direccion));
+  
+  // Cierra el modal y muestra un mensaje de éxito
+  modal.style.display = "none";
+  alert("Dirección guardada exitosamente.");
+};
+});
+
+
 function finalizarCompra() {
   if (!carrito || carrito.length === 0) {
       alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
