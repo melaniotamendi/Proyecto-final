@@ -305,4 +305,4 @@ function finalizarCompra() {
   actualizarBadgeCarrito();
   renderizarCarrito();
 }
-
+});
