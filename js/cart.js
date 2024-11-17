@@ -163,4 +163,64 @@ function actualizarBadgeCarrito() {
   function continuarComprando() {
     window.location.href = "categories.html";
 }
+
+function finalizarCompra() {
+    
+    // validación
+    const addressFields = [
+        document.getElementById('inputDireccion'), 
+        document.getElementById('inputCiudad'),    
+        document.getElementById('inputCodigoPostal')
+    ];
+    const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+    const selectedPayment = document.querySelector('input[name="payment"]:checked');
+   
+    //validación campos de dirección
+    const addressComplete = addressFields.every(field => field && field.value.trim() !== "");
+    
+    //validación cantidad válida
+    const cantidadValida = carrito.every(producto => producto.cantidad > 0);
+
+    //condicionales pago y envío
+    if (!addressComplete) {
+        alert("Por favor, complete todos los campos de la dirección.");
+        return;
+    }
+
+    if (!selectedShipping) {
+        alert("Por favor, seleccione un tipo de envío.");
+        return;
+    }
+
+    if (!cantidadValida) {
+        alert("La cantidad de cada producto debe ser mayor a 0.");
+        return;
+    }
+
+    if (!selectedPayment) {
+        alert("Por favor, seleccione una forma de pago.");
+        return;
+    }
+
+    // validar forma de pago que se selecciona
+    let paymentFieldsComplete = true;
+    if (selectedPayment.value === 'creditCard') {
+        paymentFieldsComplete = document.getElementById('inputNumeroTarjeta').value.trim() !== "" &&
+                                document.getElementById('inputFechaExpiracion').value.trim() !== "" &&
+                                document.getElementById('inputCodigoSeguridad').value.trim() !== "";
+    } else if (selectedPayment.value === 'bankTransfer') {
+        paymentFieldsComplete = document.getElementById('inputNumeroCuenta').value.trim() !== "";
+    }
+
+    console.log("Payment fields complete:", paymentFieldsComplete);
+
+
+    if (!paymentFieldsComplete) {
+        alert("Complete todos los campos para la forma de pago seleccionada.");
+        return;
+    }
+
+    alert("¡Compra exitosa!");
+}
+
   
