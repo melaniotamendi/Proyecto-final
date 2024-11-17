@@ -188,121 +188,71 @@ function actualizarBadgeCarrito() {
 
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById("myModal");
   const span = document.getElementsByClassName("close")[0];
-  
+  const guardarBtn = document.getElementById("guardarDireccionBtn");
+  const loggedInUser = localStorage.getItem("loggedInUser");
   // Función para abrir el modal
   function abrirModal() {
-  modal.style.display = "block";
+    modal.style.display = "block";
   }
-  
   // Cerrar el modal al hacer clic en el botón de cerrar (X)
-  span.onclick = function() {
-  modal.style.display = "none";
-  }
-  
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
   // Cerrar el modal al hacer clic fuera del contenido del modal
-  window.onclick = function(event) {
-  if (event.target == modal) {
-  modal.style.display = "none";
-  }
-  }
-  
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
   // Hacer disponible la función abrirModal globalmente
   window.abrirModal = abrirModal;
-  
   // Función para guardar la dirección en el localStorage
-  window.guardarDireccion = function () {
+  function guardarDireccion(event) {
+    event.preventDefault(); // Detiene el comportamiento predeterminado del formulario
     if (!loggedInUser) {
-        alert("Debes iniciar sesión para guardar tu dirección.");
-        return;
+      alert("Debes iniciar sesión para guardar tu dirección.");
+      return;
     }
 
-    // Captura los valores del formulario
-    const camposDireccion = {
-        departamento: document.getElementById("departamento"),
-        localidad: document.getElementById("localidad"),
-        calle: document.getElementById("calle"),
-        numero: document.getElementById("numero"),
-        esquina: document.getElementById("esquina"),
-    };
+    // Obtener valores de los inputs
+    const departamentoInput = document.getElementById("departamento").value.trim();
+    const localidadInput = document.getElementById("localidad").value.trim();
+    const calleInput = document.getElementById("calle").value.trim();
+    const numeroInput = document.getElementById("numero").value.trim();
+    const esquinaInput = document.getElementById("esquina").value.trim();
 
-    let esValido = true;
-
-    // Validar cada campo
-    Object.entries(camposDireccion).forEach(([key, campo]) => {
-        if (!campo.value.trim()) {
-            campo.classList.add("campo-invalido"); // Agregar clase para marcar en rojo
-            esValido = false;
-        } else {
-            campo.classList.remove("campo-invalido"); // Remover clase si está completo
-        }
-    });
-
-    if (!esValido) {
-        alert("Por favor, completa todos los campos antes de guardar.");
-        return;
+    // Validación de campos obligatorios
+    if (!departamentoInput || !localidadInput || !calleInput || !numeroInput || !esquinaInput) {
+      alert("Todos los campos marcados son obligatorios. Por favor, completa la dirección.");
+      return;
     }
 
-    // Crea un objeto con los datos de la dirección
+    // Crear objeto dirección
     const direccion = {
-        departamento: camposDireccion.departamento.value,
-        localidad: camposDireccion.localidad.value,
-        calle: camposDireccion.calle.value,
-        numero: camposDireccion.numero.value,
-        esquina: camposDireccion.esquina.value,
+      departamento: departamentoInput,
+      localidad: localidadInput,
+      calle: calleInput,
+      numero: numeroInput,
+      esquina: esquinaInput || null // Esquina es opcional
     };
 
-    // Guarda la dirección en localStorage con la clave asociada al usuario
+    // Guardar en localStorage
     const direccionKey = `direccion_${loggedInUser}`;
     localStorage.setItem(direccionKey, JSON.stringify(direccion));
 
-    // Cierra el modal y muestra un mensaje de éxito
-    const modal = document.getElementById("myModal");
+    // Cerrar modal y mostrar mensaje de éxito
     modal.style.display = "none";
     alert("Dirección guardada exitosamente.");
-};
+  }
+  // Asignar evento al botón guardar
+  guardarBtn.addEventListener("click", guardarDireccion);
+});
 
 
 function finalizarCompra() {
-  if (!carrito || carrito.length === 0) {
-      alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
-      return;
-  }
-
-  const direccionKey = `direccion_${loggedInUser}`;
-  const direccion = JSON.parse(localStorage.getItem(direccionKey));
-
-  if (!direccion || Object.values(direccion).some(value => !value || value.trim() === "")) {
-      alert("Por favor, asegúrate de ingresar y guardar una dirección válida.");
-      return;
-  }
-
-  const selectedShipping = document.querySelector('input[name="shipping"]:checked');
-  if (!selectedShipping) {
-      alert("Por favor, selecciona un tipo de envío.");
-      return;
-  }
-
-  const cantidadValida = carrito.every(producto => producto.cantidad > 0);
-  if (!cantidadValida) {
-      alert("La cantidad de cada producto debe ser mayor a 0.");
-      return;
-  }
-
-  const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked');
-  if (!selectedPayment) {
-      alert("Por favor, selecciona una forma de pago.");
-      return;
-  }
-
-  // si todo está validado
-  alert("¡Compra finalizada con éxito! Gracias por tu pedido.");
-  carrito = [];
-  localStorage.setItem(carritoKey, JSON.stringify(carrito));
-  actualizarBadgeCarrito();
+@@ -300,4 +306,3 @@ function finalizarCompra() {
   renderizarCarrito();
 }
-});
