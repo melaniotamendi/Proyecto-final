@@ -961,3 +961,35 @@ button {
   margin-left: -20px;
 }
 }
+
+ /* este es de la tablet */
+ @media only screen and (max-width: 1024px) and (min-width: 768px) {
+  #cartContainer {
+    display: flex;
+    margin-top: -50px;
+    margin-left: -60px;
+    padding: 10px;
+    box-sizing: border-box;
+    transform: scale(0.87);
+  }
+  
+  #tituloCart {
+    margin-left: 30px;
+  }
+  
+  .payment-shipping-cards {
+    transform: scale(0.9);
+    padding: 10px;
+    margin-top: -50px;
+  }
+  
+  #cartSummary {
+    transform: scale(0.9);
+    margin-left: 310px;
+    margin-top: 0%;
+  }
+  
+  .buttons {
+    margin-left: -20px;
+  }
+ }
