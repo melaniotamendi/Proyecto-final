@@ -928,3 +928,36 @@ button {
 }
 
 
+/*CSS PARA EL CART HTML, CELULAR */
+
+@media only screen and (max-width: 568px) and (min-width: 320px) {
+#cartContainer {
+  display: flex;
+  margin-top: -50px;
+  margin-left: -60px;
+  padding: 10px;
+  box-sizing: border-box;
+  transform: scale(0.7);
+}
+
+#tituloCart {
+  margin-left: 30px;
+}
+
+.payment-shipping-cards {
+  transform: scale(0.5);
+  padding: 10px;
+  margin-top: -200px;
+}
+
+#cartSummary {
+  transform: scale(0.5);
+  padding: 10px;
+  margin-top: -200px;
+  margin-left: -80;
+}
+
+.buttons {
+  margin-left: -20px;
+}
+}
