@@ -1,3 +1,7 @@
+let loggedInUser = localStorage.getItem("loggedInUser");
+let carritoKey = `carrito_${loggedInUser}`;
+let carrito = JSON.parse(localStorage.getItem(carritoKey)) || [];
+
 // Para manejar el nombre del usuario y el botón de cerrar sesión
 document.addEventListener('DOMContentLoaded', () => {
   const loggedInUser = localStorage.getItem('loggedInUser');
@@ -165,4 +169,106 @@ function actualizarBadgeCarrito() {
   function continuarComprando() {
     window.location.href = "categories.html";
 }
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById("myModal");
+  const span = document.getElementsByClassName("close")[0];
+  
+  // Función para abrir el modal
+  function abrirModal() {
+  modal.style.display = "block";
+  }
+  
+  // Cerrar el modal al hacer clic en el botón de cerrar (X)
+  span.onclick = function() {
+  modal.style.display = "none";
+  }
+  
+  // Cerrar el modal al hacer clic fuera del contenido del modal
+  window.onclick = function(event) {
+  if (event.target == modal) {
+  modal.style.display = "none";
+  }
+  }
+  
+  // Hacer disponible la función abrirModal globalmente
+  window.abrirModal = abrirModal;
+  
+  // Función para guardar la dirección en el localStorage
+  window.guardarDireccion = function() {
+
+  if (!loggedInUser) {
+  alert("Debes iniciar sesión para guardar tu dirección.");
+  return;
+  }
+  
+  // Captura los valores del formulario
+  const departamento = document.getElementById("departamento").value;
+  const localidad = document.getElementById("localidad").value;
+  const calle = document.getElementById("calle").value;
+  const numero = document.getElementById("numero").value;
+  const esquina = document.getElementById("esquina").value;
+  
+  // Crea un objeto con los datos de la dirección
+  const direccion = {
+  departamento,
+  localidad,
+  calle,
+  numero,
+  esquina
+  };
+  
+  // Guarda la dirección en localStorage con la clave asociada al usuario
+  const direccionKey = `direccion_${loggedInUser}`;
+  localStorage.setItem(direccionKey, JSON.stringify(direccion));
+  
+  // Cierra el modal y muestra un mensaje de éxito
+  modal.style.display = "none";
+  alert("Dirección guardada exitosamente.");
+};
+});
+
+
+function finalizarCompra() {
+  if (!carrito || carrito.length === 0) {
+      alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+      return;
+  }
+
+  const direccionKey = `direccion_${loggedInUser}`;
+  const direccion = JSON.parse(localStorage.getItem(direccionKey));
+
+  if (!direccion || Object.values(direccion).some(value => !value || value.trim() === "")) {
+      alert("Por favor, asegúrate de ingresar y guardar una dirección válida.");
+      return;
+  }
+
+  const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+  if (!selectedShipping) {
+      alert("Por favor, selecciona un tipo de envío.");
+      return;
+  }
+
+  const cantidadValida = carrito.every(producto => producto.cantidad > 0);
+  if (!cantidadValida) {
+      alert("La cantidad de cada producto debe ser mayor a 0.");
+      return;
+  }
+
+  const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked');
+  if (!selectedPayment) {
+      alert("Por favor, selecciona una forma de pago.");
+      return;
+  }
+
+  // si todo está validado
+  alert("¡Compra finalizada con éxito! Gracias por tu pedido.");
+  carrito = [];
+  localStorage.setItem(carritoKey, JSON.stringify(carrito));
+  actualizarBadgeCarrito();
+  renderizarCarrito();
+}
+
   

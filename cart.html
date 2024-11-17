@@ -52,7 +52,7 @@
   </nav>
   <main>
     <br>
-    <h2>Mi Carrito</h2>
+    <div id="tituloCart"> <h2>Mi Carrito</h2> </div>
     <br>
     <div id="cartContainer">
       <!-- Se muestra la informacion del producto comprado -->
@@ -61,23 +61,23 @@
     <br>
     <br>
        <!-- Contenedor para las tarjetas de Forma de Pago y Tipos de Envío -->
-       <div id="paymentCard" class="payment-shipping-cards"> 
+       <div class="payment-shipping-cards"> 
         <!-- Tarjeta de Forma de Pago -->
         <div class="card payment-method">
           <div class="card-header">
-            FORMA DE PAGO
+           FORMA DE PAGO
           </div>
           <div class="card-body">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="creditCard" value="creditCard">
+              <input class="form-check-input" type="radio" id="creditCard" value="creditCard">
               <label class="form-check-label" for="creditCard">Tarjeta de Crédito</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="bankTransfer" value="bankTransfer">
+              <input class="form-check-input" type="radio" id="bankTransfer" value="bankTransfer">
               <label class="form-check-label" for="bankTransfer">Transferencia Bancaria</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="cash" value="cash">
+              <input class="form-check-input" type="radio" id="cash" value="cash">
               <label class="form-check-label" for="cash">Efectivo</label>
             </div>
            <!-- Contenedor para imágenes -->
@@ -90,25 +90,64 @@
     </div>
       
         <!-- Tarjeta de Tipos de Envío -->
-        <div id="shippingCard" class="card shipping-card">
+        <div class="card shipping-card">
           <div class="card-header">
             TIPOS DE ENVÍO
           </div>
           <div class="card-body">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="shipping" id="standard" value="0.05" onchange="actualizarTotal()">
+              <input class="form-check-input" type="radio" name="shipping" id="standard" value="0.05" onchange="actualizarTotal()">
               <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="shipping" id="express" value="0.07" onchange="actualizarTotal()">
+              <input class="form-check-input" type="radio" name="shipping" id="express" value="0.07" onchange="actualizarTotal()">
               <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="shipping" id="premium" value="0.15" onchange="actualizarTotal()">
+              <input class="form-check-input" type="radio" name="shipping" id="premium" value="0.15" onchange="actualizarTotal()">
               <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
             </div>
           </div>
           <button onclick="abrirModal()" class="agregar-direccion-btn">Agregar dirección de envío</button>
+            
+          
+  <!--modal para agregar direccion-->
+  <div id="myModal" class="modal">
+  <div class="modal-content">
+  <span class="close">&times;</span>
+  <h3 class="modal-title">Información de Envío</h3>
+  <form id="direForm" method="get" action="index.html">
+    <br>
+  <div class="mb-3">
+  <label for="depa" class="form-label">Departamento</label>
+  <input type="text" class="form-control" id="departamento" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Localidad</label>
+  <input type="text" class="form-control" id="localidad" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Calle</label>
+  <input type="text" class="form-control" id="calle" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Numero</label>
+  <input type="number" class="form-control" id="numero" name="text" required>
+  </div>
+  <div class="mb-3">
+  <label for="text" class="form-label">Esquina</label>
+  <input type="text" class="form-control" id="esquina" name="text" required>
+  </div>
+  <br>
+  <button type="button" class="btn-modal" onclick="guardarDireccion()">Guardar Información</button> <!--modificar boton-->
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
         </div>
       </div>
     <div id="cartSummary" class="cart-summary" style="display: none;">
@@ -121,12 +160,13 @@
           <span id="costenvio"></span>
           <br>
           <br>
-          <br>
           <span>TOTAL</span>
           <span id="totalPrice"></span>
       </div>
       <div class="buttons">
           <button onclick="continuarComprando()">CONTINUAR COMPRANDO</button>
+          <br>
+          <br>
           <button onclick="finalizarCompra()">FINALIZAR COMPRA</button>
       </div>
     </div>
