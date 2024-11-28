@@ -8,17 +8,17 @@ const app = express();
 
 app.use(cors())
 
-const PORT = 3600;
+const PORT = 3800;
 
 // Ruta para devolver todos los productos de `cats_products`
 app.get('/cats', (req, res) => {
-  const filePath = path.join(__dirname, 'emercado-api-main/emercado-api-main/emercado-api-main/cats/cat.json');
+  const filePath = path.join(__dirname, 'emercado-api-main/cats/cat.json');
   res.sendFile(filePath)
 
 });
 app.get('/cats_products/:id', (req, res) => {
   const { id } = req.params; // Extraemos el id de la URL
-  const catsFilePath = path.join(__dirname, `emercado-api-main/emercado-api-main/emercado-api-main/cats_products/${id}.json`);
+  const catsFilePath = path.join(__dirname, `emercado-api-main/cats_products/${id}.json`);
 
   // Verificar si el archivo existe
   fs.access(catsFilePath, fs.constants.F_OK, (err) => {
@@ -34,7 +34,7 @@ app.get('/cats_products/:id', (req, res) => {
 
 
 app.get('/products', (req, res) => {
-  const productsDirPath = path.join(__dirname, 'emercado-api-main/emercado-api-main/emercado-api-main/products');
+  const productsDirPath = path.join(__dirname, 'emercado-api-main/products');
 
   // Leer los archivos dentro de la carpeta 'products'
   fs.readdir(productsDirPath, (err, files) => {
@@ -60,7 +60,7 @@ app.get('/products', (req, res) => {
 
 app.get('/products/:id', (req, res) => {
   const { id } = req.params;
-  const productsIdFilePath = path.join(__dirname, `emercado-api-main/emercado-api-main/emercado-api-main/products/${id}.json`);
+  const productsIdFilePath = path.join(__dirname, `emercado-api-main/products/${id}.json`);
   res.sendFile(productsIdFilePath)
 
 });

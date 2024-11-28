@@ -1,8 +1,8 @@
 // URLs apuntando al servidor local
-const CATEGORIES_URL = "http://localhost:3600/cats"; // Devuelve todos los productos
-const CATS_ID_URL = "http://localhost:3600/cats_products/";// Debe incluir el ID al final
-const PRODUCT_INFO_URL = "http://localhost:3600/products"; 
-const PRODUCT_ID_URL = "http://localhost:3600/products/"; //Debe incluir el ID al final
+const CATEGORIES_URL = "http://localhost:3800/cats"; // Devuelve todos los productos
+const CATS_ID_URL = "http://localhost:3800/cats_products/";// Debe incluir el ID al final
+const PRODUCT_INFO_URL = "http://localhost:3800/products"; 
+const PRODUCT_ID_URL = "http://localhost:3800/products/"; //Debe incluir el ID al final
 
 
 
